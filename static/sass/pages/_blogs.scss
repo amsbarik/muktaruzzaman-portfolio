@@ -1,0 +1,12 @@
+@use '../base/index' as *;
+@use '../partials/variables' as *;
+
+.blogs-top{
+    padding: 4rem 0;
+    background: $bg-light;
+    margin-top: -23px;
+    // .heading{font-size: 2rem;}
+    .form-control{
+        max-width: 28rem;
+    }
+}

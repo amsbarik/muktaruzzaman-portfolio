@@ -1,0 +1,26 @@
+@use '../base/index' as *;
+@use '../partials/variables' as *;
+
+.case-study-top{
+    padding: 4rem 0;
+    background: $bg-light;
+    .text{padding: 0 10rem;}
+}
+
+.case-study{
+    .wrapper{
+        .card{
+            .img-fluid{width: 94%; height: 93%; object-fit: cover;}
+            background: $bg-light;
+        }
+        .step{
+            .solution-img{width: 100%; height: 100%; object-fit: cover;}
+        }
+        .results{
+            .card-title{color: $primary; font-size: 1rem;}
+            .up-down{font-size: 1rem; color: lighten($color: $dark, $amount: 24);}
+            span{font-size: 1rem;}
+            small{font-size: .8rem;}
+        }
+    }
+}

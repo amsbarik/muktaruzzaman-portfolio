@@ -1,0 +1,10 @@
+@use '../base/index' as *;
+@use '../partials/variables' as *;
+
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 24rem ;
+}

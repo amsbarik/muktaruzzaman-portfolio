@@ -1,0 +1,33 @@
+@use '../base/index' as *;
+@use '../partials/variables' as *;
+
+
+// testimonials
+.testimonials{
+    .wrapper{
+        .card{
+            background: $light;
+            padding: 1.5rem 2.2rem;
+            .quote{
+                background: $primary;
+                width: 5rem;
+                height: 5rem;
+                position: absolute;
+                left: -2.7rem;
+                top: -2.7rem;
+                rotate: 45deg;
+                padding: 1.7rem 1rem 2rem 3.8rem;
+                i{rotate: -45deg; font-size: 0.875rem; color: $white;}
+            }
+            .user-photo{
+                width: 3.75rem;
+                height: 3.75rem;
+                object-fit: cover;
+            }
+            .card-text{
+                height: 6rem;
+                overflow-y: auto;
+            }
+        }
+    }
+}

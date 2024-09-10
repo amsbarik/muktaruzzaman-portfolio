@@ -1,0 +1,103 @@
+{% extends 'layouts/master.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %} Feedback {% endblock title %}
+
+{% block content %} 
+<main class="main-wrapper">
+    {% include 'components/message.html' %}
+    <section class="contact-top">
+        <div class="container">
+            <div class="wrapper">
+                <h1 class="heading text-center">Share Your Experience</h1>
+                <p class="text text-center mt-3">Share your experience and help me grow! I value your feedback to enhance my services and better serve you. or <br> send me an email to <a class="text-link" href="mailto: amsbarik24@gmail.com" title="Click to mail!">amsbarik24@gmail.com</a> or call to <a class="text-link" title="Click to call!" href="tel:+8801723361666">+880 172 3361 666</a></p>
+                <p class="text text-center mt-3">Want to get connected? Follow me on the social media below.</p>
+
+                <ul class="d-flex mb-0 justify-content-center mt-3 social-link ">
+                    {% if linkedin_url %}
+                    <li><a href="{{ linkedin_url }}" title="Linkedin" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                    {% endif %}
+
+                    {% if github_url %}
+                    <li><a href="{{ github_url }}" title="GitHub" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                    {% endif %}
+
+                    {% if stackoverflow_url %}
+                    <li><a href="{{ stackoverflow_url }}" title="Stack Overflow" target="_blank"><i class="fa-brands fa-stack-overflow"></i></a></li>
+                    {% endif %}
+
+                    {% if reddit_url %}
+                    <li><a href="{{ reddit_url }}" title="Reddit" target="_blank"><i class="fa-brands fa-reddit"></i></a></li>
+                    {% endif %}
+
+                    {% if twitter_url %}
+                    <li><a href="{{ twitter_url }}" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    {% endif %}
+
+                    {% if facebook_url %}
+                    <li><a href="{{ facebook_url }}" title="Facebook" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact py-5">
+        <div class="container d-flex justify-content-center">
+            <div class="wrapper ">
+                
+                <h2 class="heading text-center text-capitalize mb-4">feedback</h2>
+            
+                 <form action="" method="POST" class="form" enctype="multipart/form-data"> {% csrf_token %}
+ 
+                    <div class="">
+                        {{ form.testimonial_type }} 
+                    </div>
+                    <div class="row ">
+                        <div class="col">
+                            {{ form.full_name | as_crispy_field }}
+                        </div>
+                        <div class="project-field col">
+                            {{ form.project | as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-2">
+                        <div class="col">
+                            {{ form.position | as_crispy_field }}
+                        </div>
+                        <div class="col">
+                            {{ form.image | as_crispy_field }}
+                        </div>
+                    </div>
+                
+                    <div>
+                        {{ form.comments | as_crispy_field }}
+                    </div>
+                    
+                    <p class="card-text"><i class="fa-solid fa-circle-info me-2"></i> Please, Choose the <span class="text-primary fw-medium">"Project Specific"</span> to feedback for a specific projct.</p>
+                    <p class="card-text"><i class="fa-solid fa-up-right-from-square me-2"></i>Check the <a href="{% url 'portfolio' %}" class="text-link text-decoration-underline fw-medium" title="Click to check">Projects</a> page to know my completed projects.</p>
+
+                    <div class="text-center mt-5"><button type="submit" class="btn btn-primary">Send Feedback</button></div>
+                </form>
+            
+            </div>
+        </div>
+    </section>
+
+    <!-- footer  -->
+    {% include 'layouts/footer.html' %}
+
+    
+
+</main>
+
+
+
+
+
+
+
+
+
+{% endblock content %}

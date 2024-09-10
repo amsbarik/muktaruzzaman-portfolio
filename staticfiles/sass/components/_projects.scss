@@ -1,0 +1,73 @@
+@use '../base/index' as *;
+@use '../partials/variables' as *;
+
+
+.card {
+    height: 100%;
+    background: $bg-light;
+    position: relative;
+    .row{
+        height: 100%;
+        .card-title{
+            font-size: 1.125rem;
+            text-decoration: underline;
+        }
+        .img-fluid{
+            height: 100%;
+            width: 94%;
+            object-fit: cover;
+        }
+    }
+    .case-study-overlay{
+        width: 100%;
+        height: 100%;
+        background: $bg-dark;
+        position: absolute;
+        opacity: 30%;
+        display: none;
+        transition: 0.4s;
+    }
+    .btn{display: none;}
+    &:hover{
+        .case-study-overlay, .btn{
+            display: block;
+        }
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .card {
+        // height: 100%;
+        // background: $bg-light;
+        // position: relative;
+        .row{
+            // height: 100%;
+            // .card-title{
+            //     font-size: 1.125rem;
+            //     text-decoration: underline;
+            // }
+            .img-fluid{
+                height: 10.25rem;
+                width: 100%;
+                border-bottom-left-radius: 0 !important;
+                border-top-right-radius: .5rem !important;
+            }
+        }
+        // .case-study-overlay{
+        //     width: 100%;
+        //     height: 100%;
+        //     background: $bg-dark;
+        //     position: absolute;
+        //     opacity: 30%;
+        //     display: none;
+        //     transition: 0.4s;
+        // }
+        // .btn{display: none;}
+        // &:hover{
+        //     .case-study-overlay, .btn{
+        //         display: block;
+        //     }
+        // }
+    }
+}

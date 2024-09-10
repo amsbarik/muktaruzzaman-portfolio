@@ -1,0 +1,19 @@
+
+<div class="col">
+    <div class="card border-0">
+        <div class="row g-0">
+          <div class="col-xl-5">
+            <img src="{{ project.image.url }}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-xl-7">
+            <div class="card-body ">
+              <h5 class="card-title">{{ project.name }}</h5>
+              <p class="card-text">{{ project.intro }}</p>
+              <p class="card-text mt-3"><small class="text-body-secondary">Client: {{ project.client }}</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="case-study-overlay rounded"></div>
+        <a href="{% url 'case_study' project.id %}" target="_blank" class="btn position-absolute top-50 start-50 translate-middle btn-dark"><i class="fa-solid fa-eye me-2"></i> View Case Study</a>
+    </div>
+</div>

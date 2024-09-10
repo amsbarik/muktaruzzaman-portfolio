@@ -1,0 +1,86 @@
+{% extends 'admin_panel/layouts/master.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Blog Content Form {% endblock title %}
+
+{% block content %}
+
+<h1 class="app-page-title">Blog Content Form</h1>
+
+<form action="" method="POST" class="form" enctype="multipart/form-data"> {% csrf_token %}
+
+    <!-- heading -->
+    <div class="row row-cols-1 row-cols-md-2">
+        <div class="col">
+            {{ form.heading | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.blog | as_crispy_field }}
+        </div>
+    </div>
+    <div>
+        {{ form.cover_photo | as_crispy_field }}
+    </div>
+    <div>
+        {{ form.content | as_crispy_field }}
+    </div>
+    <div>
+        {{ form.content2 | as_crispy_field }}
+    </div>
+
+    <!-- code_heading -->
+    <div class="row row-cols-1 row-cols-md-2">
+        <div class="col">
+            {{ form.code_heading | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.code_img | as_crispy_field }}
+        </div>
+    </div>
+    <div>
+        {{ form.code_txt | as_crispy_field }}
+    </div>
+
+    <!-- key_heading -->
+    <div class="row row-cols-1 row-cols-md-2">
+        <div class="col">
+            {{ form.key_heading | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.key_img | as_crispy_field }}
+        </div>
+    </div>
+    <div>
+        {{ form.key_txt | as_crispy_field }}
+    </div>
+    <div>
+        {{ form.key_point1 | as_crispy_field }}
+    </div>
+    <div>
+        {{ form.key_point2 | as_crispy_field }}
+    </div>
+    <div>
+        {{ form.key_point3 | as_crispy_field }}
+    </div>
+    <div>
+        {{ form.key_point4 | as_crispy_field }}
+    </div>
+    <div>
+        {{ form.key_point5 | as_crispy_field }}
+    </div>
+
+
+    <div class="mt-3">
+        {{ form.is_active | as_crispy_field }}
+    </div>
+    
+    <button type="submit" class="btn btn-primary mt-4 me-3">Submit</button>
+    <a href="{% url 'blog_content_all' %}" class="btn btn-dark mt-4"> Cancel</a>
+</form>
+			 
+
+
+
+
+
+
+{% endblock content %}

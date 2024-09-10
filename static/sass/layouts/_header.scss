@@ -1,0 +1,109 @@
+@use "../base/index" as *;
+@use "../partials/index" as *;
+
+
+
+
+ 
+
+  
+.header{
+    .navbar{
+        .navbar-toggler{
+            &:focus{
+                outline: none;
+                box-shadow: none;
+            }
+        }
+        .offcanvas{
+            background: lighten($color: $primary, $amount: 10); 
+            .offcanvas-body{
+                background: $primary;
+                color: $white;
+                overflow-y: auto;
+                scrollbar-color: rgba(13, 22, 18, 0.2) #54B689;
+                scrollbar-width: thin;
+                .profile-photo{
+                    width: 162px;
+                    height: 162px;
+                    object-fit: cover;
+                  }
+                
+    
+                .intro{
+                    font-size: 0.875rem;
+                    font-weight: 400;
+                }
+                .social-link{
+                    font-size: 1.45rem;
+                    i{margin: 0rem .45rem; color: $white; transition: .3s;
+                    &:hover{color: $dark;}}
+                }
+                .main-nav{
+                    li{
+                        margin-bottom: 1rem;
+                    }
+                }
+                .btn-dark{
+                    background: darken($color: $primary, $amount: 17);
+                    &:hover{
+                        background: darken($color: $primary, $amount: 20);
+                    }
+                }
+            
+                .feedback{
+                    margin-top: 10rem; 
+                    a{
+                        font-size: .875rem; 
+                        color: darken($color: $primary, $amount: 20); 
+                        font-weight: 600; font-style: italic; 
+                        text-decoration: underline;
+                        transition: .4s;
+                        &:hover{color: $dark;  }
+                    }
+                    
+                }
+            }
+        }
+    }
+  }
+
+  @media (max-width:992px) {
+    .header{
+        .navbar{
+            .offcanvas{
+                width: 14.5rem;
+                .offcanvas-body{
+                    
+                    .profile-photo{
+                        width: 140px;
+                        height: 140px;
+                    }
+                    .name{font-size: 1.2rem;}
+                    .intro{
+                        font-size: 0.75rem;
+                        font-weight: 400;
+                    }
+                    .main-nav{
+                        li{
+                            font-size: .875rem;
+                        }
+                    }
+                    .social-link{
+                        font-size: 1.2rem;
+                    }
+                    .feedback{
+                        margin-top: 3.4rem; 
+                    }
+                }
+            }
+        }
+       
+    }
+  }
+
+  @media (min-width:992px) {
+    .header{
+        display: none ;
+    }
+  }

@@ -1,0 +1,28 @@
+{% extends 'layouts/master.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %} Resume {% endblock title %}
+
+{% block content %} 
+
+<div class="main-wrapper">
+    <section class="resume-top">
+        <div class="container">
+            <div class="wrapper">
+                <h1 class="heading text-center">Online Resume</h1>
+                <div class="text-center mt-4"><a href="{% url 'resume_pdf' %}" class="btn btn-primary" target="_blank"><i class="fa-solid fa-file-pdf me-2"></i>Download PDF</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- resume start  -->
+    
+    {% include 'layouts/resume.html' %}
+    
+    
+    <!-- footer  -->
+    {% include 'layouts/footer.html' %}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends 'layouts/master.html' %}
+{% load static %}
+
+{% block title %} Blogs {% endblock title %}
+
+{% block content %}
+<main class="main-wrapper">
+    <section class="blogs-top">
+        <div class="container">
+            {% include 'components/message.html' %}
+            <div class="wrapper">
+                <h1 class="heading text-center text-capitalize">Latest Blogs about the technology & life</h1>
+                <p class="text text-center mt-3">Welcome to my blog. Subscribe and get my latest blog post in your inbox.</p>
+
+                <form action="" method="POST" class="d-flex justify-content-center mt-4"> {% csrf_token %}
+                    <input type="email" class="form-control" name="subsmail" id="subsmail" placeholder="Enter your email" required>
+                    <button class="ms-2 btn btn-primary" type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- blogs start  -->
+    <section class="blogs mb-5">
+        <div class="container">
+            <div class="wrapper ">
+                <div class="row g-3 g-md-4 g-xl-5 row-cols-1 mt-5 row-cols-md-2 row-cols-xl-3">
+                    {% for blog in blogs %}
+                    <div class="col">
+                        {% include 'components/blogs.html' %}
+                    </div>
+                    
+                    {% endfor %}
+                    
+                </div>
+
+                <div class="d-flex justify-content-center mt-5">
+                    {% include 'components/pagination.html' %}
+                </div>
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- footer  -->
+    {% include 'layouts/footer.html' %}
+</main>
+
+
+
+
+
+
+{% endblock content %}

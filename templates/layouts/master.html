@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Developer Portfolio Web Application">
+    <meta name="author" content="Abdul Barik">
+    <meta name="keywords" content="Portfolio, ">
+
+    <!-- bootstrap css cdn link  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- custom css link  -->
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet" type="text/css">
+    <!-- font awesome link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>{% block title %} Master  {% endblock title %}</title>
+
+    <!-- root css  -->
+    <style>
+      :root{
+          --primary : #27b674;
+          --primary-deep : #21a768;
+          --secondary: #AED2ED;
+          --dark: #26362E;
+          --dark-deep: #24302a;
+          --warning: #F4E87B;
+          --info: #E698F2;
+          --danger: #E84736;
+          --danger-deep: #da4433;
+          --white: #ffffff;
+          --light: #fafafa;
+      }
+   </style>
+
+    <style>
+      .resume-color-txt span{
+        color: #27b674; font-weight: 500;
+      }
+
+       /* feedback form css start */
+       #id_testimonial_type {
+            display: flex;
+            margin-bottom: .7rem;
+        }
+        #id_testimonial_type div {
+            margin-right: 1rem;
+            font-weight: 600;
+            /* color: var(--primary); */
+            font-size: 1rem;
+        }
+
+        #id_testimonial_type_0, #id_testimonial_type_1{
+            accent-color: #23a167;
+        }
+    </style>
+</head>
+<body>
+    
+
+    {% include 'layouts/header.html' %}
+
+    {% include 'layouts/sidebar.html' %}
+
+    
+    {% block content %} content {% endblock content %}
+    
+
+
+    <!-- bootstrap downloaded link  -->
+    <!-- <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script> -->
+
+    <!-- bootstrap cdn link  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    
+    <!--slick js link-->
+    <!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+    <!-- <script type="text/javascript" src="slick/slick.min.js"></script> -->
+      
+
+
+  <!-- feedback form project field js  -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const testimonialTypeField = document.querySelectorAll('input[name="testimonial_type"]');
+        const projectFieldWrapper = document.querySelector('.project-field');
+        const generalLabel = document.querySelector('label[for="id_testimonial_type_0"]');
+        const projectLabel = document.querySelector('label[for="id_testimonial_type_1"]');
+    
+        function toggleProjectField() {
+            const selectedType = document.querySelector('input[name="testimonial_type"]:checked').value;
+            if (selectedType === 'project') {
+                projectFieldWrapper.style.display = 'block';
+                projectLabel.style.color = '#27b674'; // Change project label color to green
+                generalLabel.style.color = '#26362E'; // Reset general label color
+            } else {
+                projectFieldWrapper.style.display = 'none';
+                generalLabel.style.color = '#27b674'; // Change general label color to blue
+                projectLabel.style.color = '#26362E'; // Reset project label color
+            }
+        }
+    
+        testimonialTypeField.forEach(field => field.addEventListener('change', toggleProjectField));
+        toggleProjectField();  // Initial call to set the correct state
+    });
+  </script>
+
+<!-- slick carosel js -->
+    <!-- <script>
+        $('.trend-course-slide').slick({
+          infinite: true,
+          slidesToShow: 3,
+          centerPadding: '20px',
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          responsive: [
+          {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            centerPadding: '20px',
+            infinite: true,
+            dots: true
+            }
+          },
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          },
+      
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+          ]
+          });
+    </script> -->
+
+
+</body>
+</html>

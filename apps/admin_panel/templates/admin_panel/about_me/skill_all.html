@@ -1,0 +1,117 @@
+{% extends 'admin_panel/layouts/master.html' %}
+{% load custom_filters %}
+
+{% block title %} Technical Skills {% endblock title %}
+
+{% block content %} 
+
+<!-- search start  -->
+<div class="row g-3 mb-4 align-items-center justify-content-between">
+    <div class="col-auto">
+        <h1 class="app-page-title mb-0">Technical Skills </h1>
+
+    </div>
+    <div class="col-auto">
+         <div class="page-utilities">
+            <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
+                <div class="col-auto">
+                    <form class="table-search-form row gx-1 align-items-center">
+                        <div class="col-auto">
+                            <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Search">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn app-btn-secondary">Search</button>
+                        </div>
+                    </form>
+                    
+                </div><!--//col-->
+
+                <div class="col-auto">
+                    <h5 class="card-title mb-0 text-end"><a href="{% url 'skill_form' %}" class="btn btn-primary ">Add New Skill</a></h5>
+                </div>
+            </div><!--//row-->
+        </div><!--//table-utilities-->
+    </div><!--//col-auto-->
+</div>
+
+<div class="app-card app-card-orders-table shadow-sm mb-5">
+    <div class="app-card-body">
+        <div class="table-responsive">
+            <table class="table app-table-hover mb-0 text-left">
+                <thead>
+                    <tr>
+                        <th class="cell">ID</th>
+                        <th class="cell">Updated At</th>
+                        <th class="cell">Skill</th>
+                        <th class="cell">Order</th>
+                        <th class="cell">Description</th>
+                        <th class="cell">Logo</th>
+                        <th class="cell">Status</th>
+                        <th class="cell">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- fields ::  heading, skill_desc -->
+
+                    {% for skill in skills %}
+                    <tr>
+                        <td class="cell">{{ skill.id }}</td>
+                        <td class="cell"><span>{{ skill.updated_at | abbreviate_month }}</span><span class="note">{{ skill.updated_at | time:"h:i A" }}</span></td>
+                        <td class="cell"><span class="truncate">{{ skill.name }}</span></td>
+                        <td class="cell">
+                            {% if skill.order %}
+                            {{ skill.order }}
+                            {% else %}
+                            N/A 
+                            {% endif %}
+                        </td>
+                        <td class="cell" style="max-width: 400px;">{{ skill.skill_txt }}</td>
+
+                        <td class="cell">
+                            {% if skill.icon_1 %}
+                                <i class="{{ skill.icon_1 }}" style="color: var(--primary); font-size: 1.3rem;"></i>
+                            {% endif %}
+
+                            {% if skill.icon_2 %}
+                                <i class="{{ skill.icon_2 }}" style="color: var(--primary); font-size: 1.3rem;"></i>
+                            {% endif %}
+
+                            {% if skill.icon_3 %}
+                                <i class="{{ skill.icon_3 }}" style="color: var(--primary); font-size: 1.3rem;"></i>
+                            {% endif %}
+
+                            {% if skill.logo_1 %}
+                                <img src="{{ skill.logo_1.url }}" class="object-fit-cover" height="21px" width="21px" >
+                            {% endif %}
+
+                            {% if skill.logo_2 %}
+                                <img src="{{ skill.logo_2.url }}" class="object-fit-cover" height="21px" width="21px">
+                            {% endif %}
+
+                            {% if skill.logo_3 %}
+                                <img src="{{ skill.logo_3.url }}" class="object-fit-cover" height="21px" width="21px">
+                            {% endif %}
+                        </td>
+
+                        <td class="cell">{{ skill.is_active | active_inactive }}</td>
+                        
+                        <td class="cell">
+                            <a href="{% url 'skill_update' skill.id %}" class=" px-1" style="color: var(--primary);"><i class="fa-regular fa-pen-to-square"></i></a>
+                            <a href="{% url 'skill_delete' skill.id %}" class=" px-1" style="color: var(--danger);"><i class="fa-regular fa-trash-can"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div><!--//table-responsive-->
+       
+    </div><!--//app-card-body-->		
+</div><!--//app-card-->
+
+
+
+{% endblock content %}</h1>
+
+  

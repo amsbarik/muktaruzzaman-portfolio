@@ -1,0 +1,99 @@
+@use '../base/index' as *;
+@use '../partials/variables' as *;
+
+.contact-top{
+    padding: 4rem 0;
+    background: $bg-light;
+    .wrapper{
+        // .heading{font-size: 2rem;}
+        .social-link{
+            li{
+                font-size: 1.5rem;
+                padding: 0 .6rem;
+                a{
+                    color: $primary;
+                    transition: .4s;
+                    &:hover{
+                        color: darken($color: $primary, $amount: 20);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.contact{
+    .wrapper{
+        .heading{font-size: 1.7rem;}
+        form{
+            width: 54rem ;
+            .form-control{
+                margin-top: -1.1rem;
+                padding-top: .8rem;
+                font-size: 0.875rem;
+
+            }
+            .form-label{
+                margin-left: .65rem;
+                background: $white;
+                padding: 0 .3rem;
+                font-size: 0.875rem;
+
+            }
+            .form-select{
+                @extend .form-control;
+            }
+            .mobile-code{
+                max-width: 5.7rem;
+            }
+        }
+        i{color: $primary;}
+
+    }
+}
+
+
+
+@media (max-width: 1200px) {
+    .contact{
+        .wrapper{
+            .heading{font-size: 1.4rem;}
+            form{
+                width: 44rem ;
+            }
+        }
+    }
+}
+@media (max-width: 780px) {
+    .contact{
+        .wrapper{
+            .heading{font-size: 1.2rem;}
+            form{
+                width: 28rem ;
+                .form-control{
+                    margin-top: -1rem;
+                    padding-top: .6rem;
+                    font-size: 0.75rem;
+    
+                }
+                .form-label{
+                    font-size: 0.75rem;
+    
+                }
+            }
+        }
+    }
+}
+@media (max-width: 576px) {
+    .contact-top{
+        padding: 2rem 0;
+    }
+    .contact{
+        .wrapper{
+            .heading{font-size: 1.1rem;}
+            form{
+                width: 18rem ;
+            }
+        }
+    }
+}

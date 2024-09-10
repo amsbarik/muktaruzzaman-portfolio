@@ -1,0 +1,90 @@
+{% extends 'layouts/master.html' %}
+{% load static %}
+
+{% block title %} Blogs {% endblock title %}
+
+{% block content %} Blogs
+<main class="main-wrapper ">
+    <!-- <section class="blogs-top">
+        <div class="container">
+            <div class="wrapper">
+                <h1 class="heading text-center text-capitalize">Latest Blogs about the technology & life</h1>
+                <p class="text text-center mt-3">Welcome to my blog. Subscribe and get my latest blog post in your inbox.</p>
+
+                <form action="" class="d-flex justify-content-center mt-4">
+                    <input type="email" class="form-control" id="subsmail" placeholder="Enter your email" required>
+                    <button class="ms-2 btn btn-primary" type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section> -->
+
+
+    <!-- blogs start  -->
+    <section class="blog-content mb-5">
+        <div class="container">
+            <div class="wrapper px-xl-5">
+
+                <!-- {{ blog.title }} -->
+                <!-- <img src="{{ blog.thumbnail.url }}" width="100%" alt=""> -->
+                <!-- {{ blog.short_desc }}  -->
+                
+                <!-- heading start  -->
+                <h1 class="heading mt-5">{{ contents.heading }}</h1>
+                <p class="card-text mt-0 mb-2"><small class="text-body-secondary">Published {{ blog.time_since_published }} </small></p>
+
+                {% if contents.cover_photo %}
+                <img src="{{ contents.cover_photo.url }}" class="cover-img" alt="">
+                {% endif %}
+
+                <p class="text mt-3">{{ contents.content }}</p>
+                <p class="text mt-3">{{ contents.content2 }}</p>
+
+
+                <!-- code section start  -->
+                {% if contents.code_heading %}
+                <h1 class="heading mt-5">{{ contents.code_heading }}</h1>
+                {% endif %}
+                
+                <p class="text">{{ contents.code_txt }}</p>
+
+                {% if contents.code_img %}
+                <img src="{{ contents.code_img.url }}" class="cover-img mt-3" alt="">
+                {% endif %}
+
+                <!-- key section start  -->
+                {% if contents.key_heading %}
+                <h1 class="heading mt-5">{{ contents.key_heading }}</h1>
+                {% endif %}
+
+                <p class="text">{{ contents.key_txt }}</p>
+                
+                {% if contents.key_img %}
+                <img src="{{ contents.key_img.url }}" class="cover-img mt-3" alt="">
+                {% endif %}
+
+                <ol class="text mt-4 custom-counter">
+                    {% if contents.key_point1 %} <li>{{ contents.key_point1 }}</li> {% endif %}
+                    {% if contents.key_point2 %} <li>{{ contents.key_point2 }}</li> {% endif %}
+                    {% if contents.key_point3 %} <li>{{ contents.key_point3 }}</li> {% endif %}
+                    {% if contents.key_point4 %} <li>{{ contents.key_point4 }}</li> {% endif %}
+                    {% if contents.key_point5 %} <li>{{ contents.key_point5 }}</li> {% endif %}
+                </ol>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- hire me  -->
+    {% include 'components/hire_me.html' %}
+
+    <!-- footer  -->
+    {% include 'layouts/footer.html' %}
+</main>
+
+
+
+
+
+
+{% endblock content %}

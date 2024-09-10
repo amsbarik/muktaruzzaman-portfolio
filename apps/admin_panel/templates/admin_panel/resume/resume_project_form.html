@@ -1,0 +1,74 @@
+{% extends 'admin_panel/layouts/master.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Resume Project Form {% endblock title %}
+
+{% block content %}
+
+<h1 class="app-page-title">Resume Project Form</h1>
+
+<form action="" method="POST" class="form"> {% csrf_token %}
+    
+    <div class="row gx-4 gy-2 row-cols-1 row-cols-md-2">
+        <div class="col">
+            {{ form.name | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.resume | as_crispy_field }}
+        </div>
+        
+        <div class="col">
+            {{ form.technology_1 | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.technology_2 | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.technology_3 | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.technology_4 | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.technology_5 | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.technology_6 | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.technology_7 | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.technology_8 | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.technology_9 | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.technology_10 | as_crispy_field }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            {{ form.open_source_url | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.project_live_url | as_crispy_field }}
+        </div>
+    </div>
+    <div>
+        {{ form.order | as_crispy_field }}
+    </div>
+    <div>
+        {{ form.role_desc | as_crispy_field }}
+    </div>
+    <div >
+        {{ form.is_active | as_crispy_field }}
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-4 me-3">Submit</button>
+    <a href="{% url 'resume_project_all' %}"  class="btn btn-dark mt-4">Cancel</a>
+</form>
+			    
+
+{% endblock content %}

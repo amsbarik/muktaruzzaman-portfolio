@@ -1,0 +1,19 @@
+@use '../base/index' as *;
+@use '../partials/variables' as *;
+
+.pagination{
+    .page-item.active{
+            .page-link{
+                background-color: $primary; border: 1px solid $primary;
+                
+            }
+            
+    }
+    .page-link{
+        &:focus{
+            box-shadow: none;
+        }
+        
+    }
+}
+

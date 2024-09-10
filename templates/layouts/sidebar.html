@@ -1,0 +1,80 @@
+<!--Main Navigation start-->
+<header class="sidebar px-3">
+<!-- 
+    user_photo = models.ImageField(upload_to='users/', blank=True, default='users/user-photo.jpg')
+    position = models.CharField(max_length=50, blank=True)
+    intro = models.TextField(blank=True)
+    mobile = models.CharField(max_length=20, blank=True)
+    email = models.EmailField(blank=True)
+    location = models.CharField(max_length=100, blank=True)
+    
+    website_url = models.URLField(default='https://', blank=True)
+    linkedin_url = models.URLField(default='https://', blank=True)
+    github_url = models.URLField(default='https://', blank=True)
+    stackoverflow_url = models.URLField(default='https://', blank=True)
+    twitter_url = models.URLField(default='https://', blank=True)
+    reddit_url = models.URLField(default='https://', blank=True)
+    facebook_url = models.URLField(default='https://', blank=True)
+    
+    logo = models.ImageField(upload_to='users/', blank=True, default='users/logo.jpg')
+    fav_icon = models.ImageField(upload_to='users/', blank=True, default='users/fav-icon.png')
+    index_title = models.CharField(max_length=254, blank=True)
+    index_meta_kewords = models.TextField(blank=True)
+    short_desc = models.TextField(blank=True) -->
+
+    
+    <img class="profile-photo mt-5 mx-auto d-block rounded-circle" src="{{ user_photo }}" alt="">
+    <h5 class="text-center mt-3">{{ name }}</h5>
+    <p class="text-center intro">{{ intro }}</p>
+
+    <ul class="social-link mt-4 d-flex justify-content-center  ">
+        {% if linkedin_url %}
+        <li><a href="{{ linkedin_url }}" title="Linkedin" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+        {% endif %}
+
+        {% if github_url %}
+        <li><a href="{{ github_url }}" title="GitHub" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+        {% endif %}
+
+        {% if stackoverflow_url %}
+        <li><a href="{{ stackoverflow_url }}" title="Stack Overflow" target="_blank"><i class="fa-brands fa-stack-overflow"></i></a></li>
+        {% endif %}
+
+        {% if reddit_url %}
+        <li><a href="{{ reddit_url }}" title="Reddit" target="_blank"><i class="fa-brands fa-reddit"></i></a></li>
+        {% endif %}
+
+        {% if twitter_url %}
+        <li><a href="{{ twitter_url }}" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
+        {% endif %}
+
+        {% if facebook_url %}
+        <li><a href="{{ facebook_url }}" title="Facebook" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+        {% endif %}
+    </ul>
+
+
+    <nav class="main-nav mt-5 d-flex justify-content-center">
+        <ul class="">
+            <li class="nav-item"><a class="nav-link" href="{% url 'index' %}"><i class="fa-solid fa-user me-2"></i>About Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'portfolio' %}"><i class="fa-solid fa-laptop-code me-2" style="margin-left: -4px"></i>My Portfolio</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'resume'  %}"><i class="fa-solid fa-file-lines me-2"></i>My Resume</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'pricing' %}"><i class="fa-solid fa-briefcase me-2" style="margin-left: -3px"></i>Services & Pricing</a></li>
+            <!-- <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-tag me-2"></i>Pricing</a></li> -->
+            <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-id-badge me-2"></i>Contact Me</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'blogs' %}"><i class="fa-solid fa-blog me-2"></i>Blogs Posts</a></li>
+            
+        </ul>
+    </nav>
+
+    <div class="text-center"><a href="{% url 'contact' %}" class="btn btn-dark" type="submit"><i class="fa-regular fa-hand-pointer me-2"></i>Hire Me</a></div>
+
+    <!-- feedback btn -->
+    <div class="text-center feedback">
+        <a href="{% url 'feedback' %}"><i class="fa-solid fa-comment me-2"></i>Feedback</a>
+    </div>
+
+</header>
+
+
+<!--Main Navigation end-->

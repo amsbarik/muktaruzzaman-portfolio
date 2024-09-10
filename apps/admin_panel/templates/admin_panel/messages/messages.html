@@ -1,0 +1,127 @@
+{% extends 'admin_panel/layouts/master.html' %}
+{% load static %}
+{% load custom_filters %}
+{% load crispy_forms_tags %}
+
+{% block title %} Messages {% endblock title %}
+
+{% block custom_css %} 
+<style>
+    .message-update{
+        width: 34rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    .message-update #id_remark{
+        height: 12rem;
+        margin-bottom: 1rem;
+    }
+</style>
+{% endblock custom_css %}
+
+{% block content %}		    
+			    
+<div class="position-relative mb-3">
+    <div class="row g-3 justify-content-between">
+        <div class="col-auto">
+            <h1 class="app-page-title mb-0">Client's Messages</h1>
+        </div>
+        <div class="col-auto">
+            <div class="page-utilities d-flex">
+                <select class="form-select form-select-sm w-auto me-2" >
+                  <option selected value="option-1">All Services</option>
+                  <option value="option-2">Web Design</option>
+                  <option value="option-3">Web Development</option>
+                  <option value="option-4">Design & Development</option>
+                </select>
+                <select class="form-select form-select-sm w-auto" >
+                  <option selected value="option-1">All Status</option>
+                  <option value="option-2">Pending</option>
+                  <option value="option-3">Progress</option>
+                  <option value="option-4">Completed</option>
+                  <option value="option-4">Cancelled</option>
+                </select>
+            </div><!--//page-utilities-->
+        </div>
+    </div>
+</div>
+
+{% for message in messages %}
+
+<div class="app-card app-card-notification shadow-sm mb-4 position-relative">
+    <div class="app-card-header px-4 py-3">
+        <div class="row g-3 align-items-center">
+            <div class="col-12 col-lg-auto text-center text-lg-start">						        
+                <img class="profile-image" src="{% static 'assets/images/profiles/profile-1.png' %}" alt="">
+            </div><!--//col-->
+            <div class="col-12 col-lg-11 text-center text-lg-start">
+                <div class="d-flex justify-content-between">
+                    <div class="notification-type mb-2 ">
+                        <span class="badge bg-success">Message {{ message.id }}</span>
+                        <span class="badge bg-warning"> {{ message.status }} </span>
+                        
+                    </div>
+                    <ul class="notification-meta list-inline mt-1 mb-0">
+                        <li class="list-inline-item">{{ message.created_at | time:"h:i A" }}</li>
+                        <li class="list-inline-item">|</li>
+                        <li class="list-inline-item">{{ message.created_at | abbreviate_month }} </li>
+                    </ul>
+                </div>
+                <h4 class="notification-title mb-1 d-inline"> US${{ message.budget }} </h4> <span class="mx-2">|</span> <span style="font-size: 14px;"> {{ message.service }}</span>
+                
+                <ul class="notification-meta list-inline mt-1 mb-0">
+                    <li class="list-inline-item">{{ message.deadline }}</li>
+                    <li class="list-inline-item">|</li>
+                    <li class="list-inline-item">{{ message.name }}</li>
+                    <li class="list-inline-item">|</li>
+                    <li class="list-inline-item">{{ message.mobile }}</li>
+                    <li class="list-inline-item">|</li>
+                    <li class="list-inline-item">{{ message.email }}</li>
+                    <li class="list-inline-item">|</li>
+                    <li class="list-inline-item">{{ message.address }}</li>
+                </ul>
+        
+            </div><!--//col-->
+        </div><!--//row-->
+    </div><!--//app-card-header-->
+
+    <div class="app-card-body p-4">
+
+
+        <div class="message-wrapper">
+            <div class="message">
+
+            <div class="notification-content">{{ message.message }}</div>
+
+            <span class="readmore" data-more="Read more..." data-less="Read less..."></span>
+            </div>
+        </div>
+
+
+    </div><!--//app-card-body-->
+
+    <div class="app-card-footer px-4 py-3 d-flex justify-content-between">
+        <p class="card-text p-0 m-0">{{ message.remark }}</p>
+        <div data-bs-toggle="toggle" data-bs-target="{{message.id}}" role="button"><a href="{% url 'message_status_update' message.id %}"  class=" px-1" style="color: var(--primary);"><i class="fa-regular fa-pen-to-square"></i></a></div>
+    </div><!--//app-card-footer-->
+
+
+    <!-- message status update form  -->
+    <div id="{{message.id}}" class="message-update collapse p-4 bg-white rounded shadow">
+        <form action="" method="POST" class="message-update-form">
+            {% csrf_token %}
+        
+            {{ form }}
+            
+            <button type="submit" class="btn btn-primary mt-4">Update Status</button>
+        </form>
+    </div>
+
+</div><!--//app-card-->
+{% endfor %}
+
+
+
+
+{% endblock content %}

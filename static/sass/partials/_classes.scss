@@ -1,0 +1,150 @@
+@use "../base/index" as *;
+@use "../partials/variables" as *;
+
+// btn class 
+.btn{
+    color: $white;
+    font-weight: 600;
+    padding: .4rem 1.5rem;
+    border: none;
+}
+.btn-primary{
+    background: $primary;
+    &:hover{
+        color: $white;
+        background: darken($color: $primary, $amount: 6);
+    }
+}
+.btn-dark{
+    background: $dark;
+    &:hover{
+        color: $white;
+        background: darken($color: $dark, $amount: 6);
+    }
+}
+
+// text class 
+.text{
+    color: $text-color;
+    font-size: 1rem;
+    line-height: 1.6rem;
+}
+.card-text{
+    color: $text-color;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+}
+.text-primary{
+    color: $primary !important;
+}
+.text-dark{
+    color: $dark !important;
+}
+.text-warning{
+    color: $dark !important;
+}
+.text-light{
+    color: $light !important;
+}
+.text-light{
+    color: $white !important;
+}
+.text-danger{
+    color: $danger !important;
+}
+.text-info{
+    color: $info !important;
+}
+
+// link class 
+.text-link{
+    color: $primary;
+    &:hover{text-decoration: underline;}
+}
+
+.link{
+    color: $primary;
+    font-size: 0.875rem;
+    &:hover{
+        color: darken($color: $primary, $amount: 10)
+    }
+}
+.link-light{
+    // color: lighten($color: $dark, $amount: 40) !important;
+    color: darken($color: $light, $amount: 40 ) !important;
+}
+
+// heading class 
+.heading{
+    font-weight: $bold;
+    color: $heading-color;
+    font-size: 2rem;
+}
+
+.sub-heading{
+    font-weight: 300;
+    color: $heading-color;
+}
+
+.section-heading{
+    font-weight: $bold;
+    position: relative;
+    padding-left: 1.5rem;
+    color: $heading-color;
+    &::before{
+        content: " ";
+        width: 0.313rem;
+        height: 100%;
+        background: #54B689;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+
+// title class
+.card-title{
+    font-weight: $semibold;
+}
+
+
+.hr{
+    border: none;
+    height: 1px; 
+    background-color: lighten($color: $dark, $amount: 16);
+    opacity: .1;
+    margin: 1rem 0;
+}
+.hr-light{
+    @extend .hr;
+    background-color: lighten($color: $dark, $amount: 40);
+}
+
+
+// media 
+@media (max-width: 992px) {
+    .section-heading{font-size: 1.6rem;}
+    .heading{font-size: 1.7rem;}
+    // .sub-heading{font-size: 1.5rem;}
+}
+@media (max-width: 768px) {
+    .heading{font-size: 1.5rem;}
+    .sub-heading{font-size: 1.2rem;}
+    .section-heading{ font-size: 1.3rem;}
+    .btn {font-size: .8rem; padding: .3rem 1.3rem;}
+    .text{font-size: .875rem;}
+    .card-text{font-size: .75rem;}
+    .card-title{font-size: .8rem !important; }
+    .link{font-size: .78rem;}
+
+}
+@media (max-width: 576px) {
+    .heading{font-size: 1.3rem;}
+    .sub-heading{font-size: 1rem;}
+    .section-heading{font-size: 1.1rem;}
+    .btn {font-size: .7rem; padding: .25rem 1.25rem;}
+    .text{font-size: .75rem;}
+    .card-text{font-size: .7rem;}
+    .link{font-size: .7rem;}
+
+}

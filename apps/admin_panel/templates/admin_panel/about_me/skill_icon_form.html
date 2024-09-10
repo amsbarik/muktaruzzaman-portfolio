@@ -1,0 +1,55 @@
+{% extends 'admin_panel/layouts/master.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Skill Icon Form {% endblock title %}
+
+{% block content %}
+
+<h1 class="app-page-title">Skill Icon Form</h1>
+
+<form action="" method="POST" class="form">
+    {% csrf_token %}
+    
+    <div class="row gx-4 gy-2 row-cols-1 row-cols-md-2">
+        <div class="col">
+            {{ form.name | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.icon_class | as_crispy_field }}
+        </div>
+    </div>
+    <div>
+        {{ form.is_active | as_crispy_field }}
+    </div>
+
+    <!-- for error  -->
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    {% endfor %}
+
+
+    {% for error in form.non_field_errors %}
+        <div class="error">{{ error }}</div>
+    {% endfor %}
+
+    
+    <button type="submit" class="btn btn-primary mt-4 me-3">Submit</button>
+    <a href="{% url 'skill_icon_all' %}" class="btn btn-dark mt-4">Cancel</a>
+</form>
+
+
+
+<!-- work  -->
+<!-- <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+     
+    
+
+
+    <button type="submit">Save</button>
+</form> -->
+
+
+{% endblock content %}

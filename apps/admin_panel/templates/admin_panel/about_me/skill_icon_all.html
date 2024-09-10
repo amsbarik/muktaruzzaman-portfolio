@@ -1,0 +1,78 @@
+{% extends 'admin_panel/layouts/master.html' %}
+{% load custom_filters %}
+
+{% block title %} Skill Icons {% endblock title %}
+
+{% block content %} 
+
+<!-- search start  -->
+<div class="row g-3 mb-4 align-items-center justify-content-between">
+    <div class="col-auto">
+        <h1 class="app-page-title mb-0">Skill Icons</h1>
+
+    </div>
+    <div class="col-auto">
+         <div class="page-utilities">
+            <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
+                <div class="col-auto">
+                    <form class="table-search-form row gx-1 align-items-center">
+                        <div class="col-auto">
+                            <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Search">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn app-btn-secondary">Search</button>
+                        </div>
+                    </form>
+                    
+                </div><!--//col-->
+
+                <div class="col-auto">
+                    <h5 class="card-title mb-0 text-end"><a href="{% url 'skill_icon_form' %}" class="btn btn-primary ">Add Skill Icon</a></h5>
+                </div>
+            </div><!--//row-->
+        </div><!--//table-utilities-->
+    </div><!--//col-auto-->
+</div>
+
+<div class="app-card app-card-orders-table shadow-sm mb-5">
+    <div class="app-card-body">
+        <div class="table-responsive">
+            <table class="table app-table-hover mb-0 text-left">
+                <thead>
+                    <tr>
+                        <th class="cell">ID</th>
+                        <th class="cell">Created At</th>
+                        <th class="cell">Icon Name</th>
+                        <th class="cell">Class</th>
+                        <th class="cell">Status</th>
+                        <th class="cell">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for icon in skill_icons %}
+                    <tr>
+                        <td class="cell">{{ icon.id }}</td>
+                        <td class="cell"><span>{{ icon.created_at | abbreviate_month }}</span><span class="note">{{ icon.created_at | time:"h:i A" }}</span></td>
+                        <td class="cell"><span class="truncate">{{ icon.name }}</span></td>
+                        <td class="cell">{{ icon.icon_class }}</td>
+                        <td class="cell">{{ icon.is_active | active_inactive }}</td>
+                        
+                        <td class="cell">
+                            <a href="{% url 'skill_icon_update' icon.id %}" class=" px-1" style="color: var(--primary);"><i class="fa-regular fa-pen-to-square"></i></a>
+                            <a href="{% url 'skill_icon_delete' icon.id %}" class=" px-1" style="color: var(--danger);"><i class="fa-regular fa-trash-can"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div><!--//table-responsive-->
+       
+    </div><!--//app-card-body-->		
+</div><!--//app-card-->
+
+
+
+{% endblock content %}</h1>
+
+  

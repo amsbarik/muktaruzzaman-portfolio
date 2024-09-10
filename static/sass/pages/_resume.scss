@@ -1,0 +1,110 @@
+@use '../base/index' as *;
+@use '../partials/variables' as *;
+
+.resume-top{
+    padding: 4rem 0;
+    background: $bg-light;
+    .wrapper{
+        .heading{
+            font-size: 2rem;
+        }
+        .btn{
+            a{color: $white;}
+        }
+    }
+}
+
+// resume css 
+.resume{
+    .wrapper{
+        padding: 0 8.5rem;
+        .resume-body{
+            .contact{
+                .heading{
+                    font-weight: $extra-bold;
+                    color: $primary;
+                    font-size: 2.5rem;
+                }
+                .sub-heading{
+                    font-weight: 300;
+                }
+                i{color: $primary}
+            }
+            
+    
+            .career-summary{
+                margin: 1.3rem 0;
+                .profile-photo{
+                    width: 7.5rem;
+                    height: 7.5rem;
+                }
+            }
+
+            .resume-details{
+                margin-top: 2rem;
+                .section-heading{font-size: 1.125rem; color: $primary;}
+                .link-light{
+                    color: darken($color: $light, $amount: 37 ) !important;
+                    font-size: .84rem;
+                    &:hover{color: darken($color: $light, $amount: 37 ) !important;}
+                }
+                .card-title{
+                    font-size: 1rem ;
+                }
+
+                //////
+                .left-side{
+                    width: 680px;
+                }
+                /// 
+                .personal-details{
+                    position: relative;
+                    padding-left: 1.5rem;
+                    width: 234px;
+                    &::before{
+                        content: " ";
+                        width: 1px;
+                        height: 100%;
+                        background: lighten($color: $dark, $amount: 16);
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        opacity: .1;
+                    }
+                    .steps{margin-top: 2.1rem ;
+                        .card-text{margin-top: .85rem;}
+                    }
+                    i{color: #a5a4a4}
+                }
+                .projects{
+                    a{
+                        color: darken($color: $light, $amount: 37 );
+                        font-size: .84rem;
+                        &:hover{color: $primary; text-decoration: underline;}
+                    }
+                    .card-text{
+                        .row{
+                            i{color: rgb(160, 160, 160);}
+                        }
+                    }
+                }
+            }
+
+            .social-link{
+                a{
+                    font-size: 0.875rem;
+                    padding:  0 1rem;
+                    color: $dark;
+                    transition: .4s;
+                    &:hover{text-decoration: underline; i{color: darken($color: $primary, $amount: 20);}}}
+                    
+                    i{font-size: 1.5rem; color: $primary;}
+            }
+        }
+        
+    }
+}
+
+
+
+

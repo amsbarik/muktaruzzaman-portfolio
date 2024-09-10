@@ -1,0 +1,73 @@
+{% extends 'admin_panel/layouts/master.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Resume Create {% endblock title %}
+
+{% block content %}
+
+<h1 class="app-page-title">My Resume Form</h1>
+
+<form action="" method="POST" class="form" enctype="multipart/form-data"> 
+    {% csrf_token %}
+    <div class="row gx-4 gy-2 row-cols-1 row-cols-md-2">
+        <div class="col">
+            {{ form.name | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.position | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.mobile | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.email | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.portfolio_url | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.image | as_crispy_field }}
+        </div>
+        
+        <div class="col">
+            {{ form.linkedin_url | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.github_url | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.facebook_url | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.twitter_url | as_crispy_field }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            {{ form.image_url | as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ form.address | as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ form.summary | as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ form.is_active | as_crispy_field }}
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-4 me-3">Submit</button>
+    <a href="{% url 'admin_resume' %}" class="btn btn-dark mt-4">Cancel</a>
+</form>
+			    
+			    
+
+
+{% endblock content %}

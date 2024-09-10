@@ -1,0 +1,105 @@
+{% extends 'admin_panel/layouts/master.html' %}
+{% load custom_filters %}
+{% load static %}
+
+{% block title %} Project Results {% endblock title %}
+
+{% block content %} 
+
+<!-- search start  -->
+<div class="row g-3 mb-4 align-items-center justify-content-between">
+    <div class="col-auto">
+        <h1 class="app-page-title mb-0">Project Results</h1>
+
+    </div>
+    <div class="col-auto">
+         <div class="page-utilities">
+            <div class="row g-2 justify-content-start justify-content-md-end align-items-center">
+                <div class="col-auto">
+                    <form class="table-search-form row gx-1 align-items-center">
+                        <div class="col-auto">
+                            <input type="text" id="search-orders" name="searchorders" class="form-control search-orders" placeholder="Search">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn app-btn-secondary">Search</button>
+                        </div>
+                    </form>
+                    
+                </div><!--//col-->
+
+                <div class="col-auto">
+                    <h5 class="card-title mb-0 text-end"><a href="{% url 'project_result_form' %}" class="btn btn-primary ">Add New Result</a></h5>
+                </div>
+            </div><!--//row-->
+        </div><!--//table-utilities-->
+    </div><!--//col-auto-->
+</div>
+
+<div class="app-card app-card-orders-table shadow-sm mb-5">
+    <div class="app-card-body">
+        <div class="table-responsive">
+            <table class="table app-table-hover mb-0 text-left">
+                <thead>
+                    <tr>
+                        <th class="cell">ID</th>
+                        <th class="cell">Created At</th>
+
+                        <th class="cell">Result</th>
+                        <th class="cell">Project</th>
+                        <th class="cell">Percent</th>
+                        <th class="cell">Up/Down</th>
+                        <th class="cell">Text</th>
+                        <th class="cell">Order</th>
+
+                        <th class="cell">Status</th>
+                        <th class="cell">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for result in project_results %}
+                    <tr>
+                        <td class="cell">{{ result.id }}</td>
+                        <td class="cell"><span>{{ result.created_at | abbreviate_month }}</span><span class="note">{{ result.created_at | time:"h:i A" }}</span></td>
+                        <td class="cell"><span class="truncate">{{ result.name }}</span></td>
+                        <td class="cell">{{ result.project_case_study }}</td>
+                        <td class="cell">{{ result.percent }}</td>
+                        <td class="cell">{{ result.up_or_down }}</td>
+                        <td class="cell">{{ result.txt }}</td>
+                        <td class="cell">{{ result.order }}</td>
+                        
+                        <td class="cell">{{ result.is_active | active_inactive }}</td>
+                        
+                        <td class="cell">
+                            <a href="{% url 'project_result_update' result.id %}" class=" px-1" style="color: var(--primary);"><i class="fa-regular fa-pen-to-square"></i></a>
+                            <a href="{% url 'project_result_delete' result.id %}" class=" px-1" style="color: var(--danger);"><i class="fa-regular fa-trash-can"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div><!--//table-responsive-->
+       
+    </div><!--//app-card-body-->		
+</div><!--//app-card-->
+
+<nav class="app-pagination">
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav><!--//app-pagination-->
+
+
+
+{% endblock content %}</h1>
+
+  

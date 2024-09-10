@@ -1,0 +1,126 @@
+{% extends 'layouts/master.html' %}
+{% load static %}
+{% block title %} Case Study {% endblock title %}
+
+{% block content %} 
+<main class="main-wrapper">
+    <section class="case-study-top">
+        <div class="container">
+            <div class="wrapper">
+                <h1 class="heading text-center">Case Study: {{ project.name }}</h1>
+                <p class="text text-center mt-3">{{ project.intro }}</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- case study start  -->
+     <section class="case-study py-5">
+        <div class="container">
+            <div class="wrapper">
+
+        <!-- fields = ['project', '', '', '', '', '', 'overview', 'challenge', 'solution_txt', 'solution_img1', 'solution_img2', 'result_txt'] -->
+
+                <div class="card border-0 " >
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="{{ case_study.thumbnail.url }}" class="img-fluid m-3  rounded" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">Client: {{ project.client }}</h5>
+                          <ul class="m-0 mt-3">
+                            <li class="mb-2"><i class="fa-solid fa-industry me-2"></i><h6 class="card-title d-inline me-2">Industry:</h6>{{ case_study.industry }}</li>
+                            <li class="mb-2"><i class="fa-solid fa-users me-2"></i><h6 class="card-title d-inline me-2">Employee:</h6>{{ case_study.employee }}</li>
+                            <li class="mb-2"><i class="fa-solid fa-link me-2"></i><h6 class="card-title d-inline me-2">Website:</h6><a href="https://{{ case_study.website }}" class="text-link" target="_blank">{{ case_study.website }}</a></li>
+                          </ul>
+
+                          <p class="card-text">{{ case_study.short_desc }}</p>
+
+                          <h6 class="card-title mt-3">Technologies</h6>
+                          <ul class="row">
+                            {% for technology in technologies %}
+                            <li class="col-auto card-text"><i class="fa-regular fa-circle-check me-2"></i>{{ technology.name }}</li>
+                            {% endfor %}
+                          </ul>
+                          <h6 class="card-title mt-3">Project Requirements</h6>
+                          <ul>
+                            {% for requirment in requirments %}
+                            <li class="card-text"><i class="fa-regular fa-circle-check me-2"></i>{{ requirment.name }}</li>
+                            {% endfor %}
+                          </ul>
+
+                          <p class="card-text"><small class="text-body-secondary">Status: Completed</small></p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+                <!-- step start  -->
+                 <div class="step mt-5">
+                    <h2 class="heading">Project Overview</h2>
+                    <p class="card-text">{{ case_study.overview }}</p>
+                 </div>
+                 <div class="step mt-5">
+                    <h2 class="heading">The Challenge</h2>
+                    <p class="card-text">{{ case_study.challenge }}</p>
+                 </div>
+                 <div class="step mt-5">
+                    <h2 class="heading">The Approach & Solution</h2>
+                    <p class="card-text">{{ case_study.solution_txt }}</p>
+                    <div class="row my-3">
+                        <div class="col"><img src="{{ case_study.solution_img1.url }}" class="rounded solution-img" alt="..."></div>
+                        <div class="col"><img src="{{ case_study.solution_img2.url }}" class="rounded solution-img" alt="..."></div>
+                    </div>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.</p>
+                 </div>
+                 <div class="step results mt-5">
+                    <h2 class="heading">The Results</h2>
+                    <div class="row row-cols-2 row-cols-md-4 ">
+
+                        {% for result in results %}
+                        <div class="col">
+                            <div class="card px-3 pt-3 border-0 mt-3">
+                                <h5 class="card-title">{{ result.name }} </h5>
+                                <h1 class="heading mb-3">{{ result.percent }}
+                                  {% if result.up_or_down %}
+                                  <span class="up-down">{{ result.up_or_down }}</span>
+                                  {% endif %}
+                                </h1> 
+                                <small class="m-0 p-0">{{ result.txt }} </small>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+                    </div>
+                    <p class="card-text mt-4 pt-2">{{ case_study.result_txt }}</p>
+                 </div>
+
+                 {% if testimonial.full_name %}
+                 <div class="step testimonials mt-5">
+                    <h2 class="heading">Client Testimonial</h2>
+                    <div class="row  mt-5 wrapper">
+                        
+                        <div class="col">
+                            {% include 'components/testimonial.html' %}
+                        </div>
+                        
+                    </div>
+                    
+                 </div>
+                 {% endif %}
+            </div>
+        </div>
+     </section>
+    <!-- case study end -->
+
+    <!-- hire me  -->
+    {% include 'components/hire_me.html' %}
+    
+    <!-- footer  -->
+    {% include 'layouts/footer.html' %}
+
+</main>
+
+
+
+{% endblock content %}

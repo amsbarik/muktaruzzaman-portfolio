@@ -1,0 +1,127 @@
+{% extends 'admin_panel/layouts/master.html' %}
+{% load custom_filters %}
+{% load crispy_forms_tags %}
+
+{% block title %}Project Developers {% endblock title %}
+
+{% block content %} 
+
+<div class="d-flex justify-content-between mt-5">
+    <div>
+        <h3 class="fw-bold"> Project:  <span class="ms-3 text-primary" >{{ project.name }}</span></h3>
+        <span>{{ case_study.industry }}</span>
+        <span class="ms-3"> Employee: {{ case_study.employee }}</span>
+    </div>
+    <h5 class="mt-1 fw-bold"> US${{ project.budget }}</h5>
+</div>
+
+     <div class="row my-4">
+        <ul class=" col-5">
+            <h5>Contact</h5>
+            <li>Start Date:<span class="ms-3"> {{ project.start_date | abbreviate_month }} </span></li>
+            <li>End Date:<span class="ms-3"> {{ project.end_date | abbreviate_month }} </span></li>
+            <li>Client Name:<span class="ms-3"> {{ project.client }} </span></li>
+            <li>Client Mobile:<span class="ms-3"> {{ project.mobile }} </span></li>
+            <li>Client Email:<span class="ms-3"> {{ project.email }} </span></li>
+            <li>Website:<a href="{{ case_study.website }}" target="_blank" class="ms-3"> {{ case_study.website }} </a></li>
+            <li>Client Address:<span class="ms-3"> {{ project.address }} </span></li>
+        </ul>
+
+        <ul class="col-7">
+            <h5>Requirements</h5>
+            {% for requirment in requirments %}
+            <li><i class="fa-solid fa-check me-2" style="color: #a5a4a4;"></i> {{ requirment.name }}</li>
+            {% endfor %}
+        </ul>
+     </div>
+
+     <div class="row">
+        <ul class="col-5">
+            <h5>Technologies</h5>
+            {% for technology in technologies %}
+            <li><i class="fa-solid fa-check me-2" style="color: #a5a4a4;"></i> {{ technology.name }}</li>
+            {% endfor %}
+        </ul>
+        <div class="col-7">
+            <h5>Description</h5>
+            <p >
+                {{ case_study.short_desc }}
+            </p>
+        </div>
+     </div>
+
+
+    <div>
+        {% if testimonial.full_name %}
+        <div class="step testimonials mt-4">
+            <h5 class="">Client Testimonial</h5>
+            <div class="row  mt-4 wrapper">
+                
+                <div class="col">
+                    {% include 'components/testimonial.html' %}
+                </div>
+                
+            </div>
+            
+        </div>
+        {% endif %}
+    </div>
+
+<!-- developer table  -->
+<h5 class="mb-3 mt-4">Project Developers</h5>
+<div class="app-card app-card-orders-table shadow-sm mb-5">
+    <div class="app-card-body">
+        <div class="table-responsive">
+            <table class="table app-table-hover mb-0 text-left">
+                <thead>
+                    <tr>
+                        <th class="cell">DevID</th>
+                        <th class="cell">Join Date</th>
+                        <th class="cell">Leave Date</th>
+                        <th class="cell">Name</th>
+                        <th class="cell">Role</th>
+                        <th class="cell">Remark</th>
+                        <th class="cell">Status</th>
+                        <th class="cell">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for developer in developers %}
+                    <tr>
+                        <td class="cell">{{ developer.name.member_id }}</td>
+                        <!-- <td class="cell"><span>{{ project.created_at | abbreviate_month }}</span><span class="note">{{ project.created_at | time:"H:i:s" }}</span></td> -->
+                        <td class="cell">{{ developer.join_date | abbreviate_month }}</td>
+                        <td class="cell">{{ developer.leave_date | default:"N/A" | abbreviate_month }}</td>
+                        <td class="cell"><span class="truncate">{{ developer.name.name }}</span></td>
+                        <td class="cell">{{ developer.role }}</td>
+                        <td class="cell">{{ developer.remark }}</td>
+                        <td class="cell">{{ developer.is_active | active_inactive }}</td>
+                        
+                         <td class="cell">
+                            <!-- <a class="btn-sm app-btn-secondary" target="_blank" href="#">View</a> -->
+                            <a href="{% url 'developer_update' developer.id %}" class="text-primary px-1"><i class="fa-regular fa-pen-to-square"></i></a>
+                            <!-- <a href="#" class="text-danger px-1"><i class="fa-regular fa-trash-can"></i></a> -->
+                        </td> 
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div><!--//table-responsive-->
+       
+    </div><!--//app-card-body-->		
+</div><!--//app-card-->
+
+
+<!-- project status update form  -->
+ <form action="" method="post" class="form">
+    {% csrf_token %}
+
+    {{ form.remark | as_crispy_field }}
+    {{ form.status | as_crispy_field }}
+    
+    <button type="submit" class="btn btn-primary mt-4">Update Status</button>
+ </form>
+
+
+{% endblock content %}

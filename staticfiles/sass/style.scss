@@ -1,0 +1,233 @@
+@use "partials/index" as *;
+@use "pages/index" as *;
+@use "base/index" as *;
+@use "layouts/index" as *;
+@use "components/index" as *;
+
+
+
+// nav bottom
+.nav-bottom{
+  border-top: 1px solid lighten($color: $dark, $amount: 77) !important;
+  height: 3.3rem !important;
+  margin-left: -2.5rem ;
+
+  .active{
+      border-top: 2px solid $primary;
+      padding: .6rem 0rem;
+      font-weight: 500;
+      margin-top: -.75rem;
+      color: $primary !important;
+  }
+  ul{
+      margin-top: .5rem;
+      .nav-item{
+          width: 3.5rem;
+          .nav-link{
+            font-size: .75rem;
+            transition: .4s;
+            &:hover{
+              i{color: $primary;}
+            }
+            span{
+              font-size: .72rem !important;
+            }
+          }
+      }
+  }
+}
+
+
+@media (min-width: 992px) {
+    .nav-bottom{
+        display: none;
+    }
+}
+// nav css end
+
+// go to to start
+.progress{
+  background: $primary;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: none;
+  place-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+
+  .progress-value{
+      height: calc(100% - 15px);
+      width: calc(100% - 15px);
+      border-radius: 50%;
+      background: $white;
+      display: grid;
+      place-items: center;
+      font-size: 35px;
+      color: $dark;
+  }
+}
+
+@media (max-width: 991px){
+  .progress{
+      bottom: 4.3rem;
+      height: 2rem;
+      width: 2rem;
+      .progress-value{
+          height: calc(100% - 10px);
+          width: calc(100% - 10px);
+          font-size: 28px !important;
+      }
+  }
+}
+// go to to end 
+
+
+
+/////////////////////////new
+.main-wrapper{
+    margin-left: 17.5rem;
+    // about me section css start 
+    .about-me{
+        padding: 64px 0px;
+        .name{
+            font-weight: $bold;
+        }
+        .cover-photo{
+            width: 100%;
+            height: 18.75rem;
+            object-fit: cover;
+            border-radius: .5rem;
+        }
+    }
+
+    // skills css start 
+    .skills{
+        padding: 64px 0px;
+        .wrapper{
+            .row{
+                .skill-card{
+                    i{font-size: 1.8rem ; color: $primary;}
+                    .card-title{
+                        font-size: 1rem;
+                        margin-top: .29rem;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+
+
+
+
+@media (min-width: 992px) {
+    section{
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}
+@media (min-width: 1200px) {
+    section{
+        padding-left: 3rem !important;
+        padding-right: 3rem !important;
+    }
+}
+
+// max width 
+@media (max-width: 1200px) {
+    .main-wrapper{
+        margin-left: 14.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .main-wrapper{
+        margin-left: 0;
+        margin-top: 3.5rem;
+        .about-me{
+            padding-top: 0;
+            padding-bottom: 3rem;
+            .name{
+                font-weight: $bold;
+            }
+            .cover-photo{
+                width: 100%;
+                border-radius: 0;
+            }
+        }
+        .skills{
+            padding-top: 3rem;
+        }
+    }
+    
+}
+
+
+@media (max-width: 768px) {
+    .main-wrapper{
+        .about-me{
+            .name{
+                font-size: 1.7rem;
+            }
+            .cover-photo{
+                height: 12rem ;
+            }
+        }
+        .skills{
+            // padding: 64px 0px;
+            .wrapper{
+                .row{
+                    .skill-card{
+                        i{font-size: 1.3rem; }
+                        img{width: 1.2rem !important; height: 1.2rem !important; margin-top: -6px !important;}
+                    }
+                }
+            }
+        }
+    }
+    .copyright{font-size: .75rem;}
+}
+
+@media (max-width: 576px) {
+    .main-wrapper{
+        .about-me{
+            padding-bottom: 2rem;
+            .name{
+                font-size: 1.4rem;
+            }
+            .cover-photo{
+                height: 9rem ;
+            }
+        }
+        .skills{padding-top: 2rem;}
+        .projects{
+            margin-top: -1rem;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// bootstrap css link 
+@import url(../node_modules/bootstrap/dist/css/bootstrap.min.css);
+@import url(../node_modules/bootstrap/scss/bootstrap.scss);

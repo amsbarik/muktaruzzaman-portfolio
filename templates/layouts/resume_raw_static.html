@@ -1,0 +1,194 @@
+<!-- context = {
+    'resume' : resume,
+    'resume_experiences' : resume_experiences,
+    'resume_experience_keys' : resume_experience_keys,
+    
+    'resume_projects' : resume_projects,
+    'project_technologies' : project_technologies,
+    
+    'technical_skills' : technical_skills,
+    'professional_skills' : professional_skills,
+    'resume_educations' : resume_educations,
+    'resume_awards' : resume_awards,
+    'resume_languages' : resume_languages,
+    'resume_interests' : resume_interests,
+} -->
+
+
+<section class="resume">
+            <div class="container">
+                <div class="wrapper mt-5 ">
+                    <div class="resume-body rounded shadow p-5">
+                        <!-- contact start  -->
+                        <div class="contact d-flex justify-content-between">
+                            <div class="left">
+                                <h1 class="heading text-uppercase">{{ resume.name }} </h1>
+                                <h4 class="sub-heading">{{ resume.position }}</h4>
+                            </div>
+        
+                            <div class="right">
+                                <ul class="m-0">
+                                    <li class="card-text"><i class="fa-solid fa-phone me-2"></i>{{ resume.mobile }}</li>
+                                    <li class="card-text"><i class="fa-solid fa-envelope me-2"></i>{{ resume.email }}</li>
+                                    <li class="card-text"><i class="fa-solid fa-globe me-2"></i>{{ resume.portfolio_url }}</li>
+                                    <li class="card-text"><i class="fa-solid fa-location-dot me-2 " style="margin-left: 2px;"></i>{{ resume.address }}</li>
+                                </ul>
+                            </div>
+                        </div>
+        
+                        <!-- career summary start -->
+                         <hr class="hr-light">
+                         <div class="career-summary d-flex" >
+                            <div class="">
+                                <img class="profile-photo rounded-circle" src="{{ resume.image.url }}" alt="" >
+                            </div>
+                            <div class="">
+                                <p class="card-text summary ms-5" >{{ resume.summary }}</p>
+                            </div>
+                         </div>
+                         
+                         <hr class="hr-light">
+        
+                         <div class="row resume-details">
+        
+                            <div class="col-auto left-side">
+                                <!-- work experience start -->
+                                <div class="experience">
+                                    <h4 class="section-heading text-uppercase"> Working Experience</h4>
+
+                                    {% for experience in resume_experiences %}
+                                    <div class="mt-4 d-flex justify-content-between">
+                                        <h2 class="card-title">{{ experience.name }} </h2>
+                                        <small class="link-light">{{ experience.company }} | {{ experience.duration }}</small>
+                                    </div>
+                                    <p class="card-text mt-2">{{ experience.role_desc }} </p>
+        
+                                    <ul class="mt-2 card-text">
+                                        {% for key in experience.keys %}
+                                        <li><i class="fa-solid fa-check me-2" style="color: #a5a4a4;"></i>{{ key.name }} </li>
+                                        {% endfor %}
+                                    </ul>
+
+
+
+                                    <hr class="hr-light">
+                                    {% endfor %}
+
+                                    <!-- <div class="mt-4 d-flex justify-content-between">
+                                        <h2 class="card-title">Junior Software Engineer</h2>
+                                        <small class="link-light">Google | 2019 - Present</small>
+                                    </div>
+                                    <p class="card-text mt-2">Role description goes here ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Donec pede justo, fringilla vel. Lorem ipsum dolor sit amet,  Aenean massa. Cum sociis natoque penatibus et ma felis.</p>
+        
+                                    <ul class="mt-2 card-text">
+                                        <li><i class="fa-solid fa-check me-2" style="color: #a5a4a4;"></i>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
+                                        <li><i class="fa-solid fa-check me-2" style="color: #a5a4a4;"></i>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
+                                        <li><i class="fa-solid fa-check me-2" style="color: #a5a4a4;"></i>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
+                                    </ul> -->
+                                </div>
+        
+                                <hr class="hr-light">
+                                <div class="projects mt-4">
+                                    <h4 class="section-heading text-uppercase">Projects</h4>
+        
+                                    <div class="mt-4 d-flex justify-content-between">
+                                        <h2 class="card-title name">Project Name</h2>
+                                        <small class="link-light"><a href="#">Open Source</a></small>
+                                    </div>
+                                    <p class="card-text resume-project-role my-2">Role description goes here as <span>Software Engineer</span> dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Donec pede justo, fringilla vel. Aenean commodo ligula eget dolor. Donec quam felis. Aenean commodo ligula eget dolor. Donec quam felis Aenean commodo ligula eget dolor. Donec quam felis Aenean commodo ligula  </p>
+
+                                    <ul class="project-technology card-text text-capitalize row gx-3 gy-1">
+                                        <li class="col-auto"><i class="fa-regular fa-circle-dot me-2" style="color: #a5a4a4;"></i>Python & Django</li>
+                                        <li class="col-auto"><i class="fa-regular fa-circle-dot me-2" style="color: #a5a4a4;"></i>Python & Django</li>
+                                        <li class="col-auto"><i class="fa-regular fa-circle-dot me-2" style="color: #a5a4a4;"></i>Python & Django</li>
+                                        <li class="col-auto"><i class="fa-regular fa-circle-dot me-2" style="color: #a5a4a4;"></i>Python & Django</li>
+                                    </ul>
+        
+                                    <hr class="hr-light">
+        
+                                    <div class="mt-4 d-flex justify-content-between">
+                                        <h2 class="card-title">Project Name</h2>
+                                        <small class="link-light"><a href="#">Open Source</a></small>
+                                    </div>
+                                    <p class="card-text mt-2">Role description goes here ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Donec pede justo. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient  Donec quam felis.</p>
+                                </div>
+                            </div>
+        
+                            <!-- right side -->
+                            <div class="col-auto right-side">
+                                <div class="personal-details">
+                                    <div class="skill ">
+                                        <h4 class="section-heading text-uppercase">Skills</h4>
+                                        <h2 class="card-title mt-4">Technical</h2>
+                                        <ul class="card-text mt-3">
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>Python & Django</li>
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>Python & Django</li>
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>Python & Django</li>
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>Python & Django</li>
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>Python & Django</li>
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>Python & Django</li>
+                                        </ul>
+                                    </div>
+        
+                                    <div class="professional mt-4">
+                                        <h2 class="card-title">Professional</h2>
+                                        <ul class="card-text mt-3">
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>Team Player</li>
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>Strong Problem Solver</li>
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>Effective Communication</li>
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>Good Time Management</li>
+                                        </ul>
+                                    </div>
+        
+                                    <!-- education -->
+                                    <div class="education steps">
+                                        <h4 class="section-heading text-uppercase">education</h4>
+                                        <ul class="card-text ">
+                                            <li>MSc in Computer Science University College London <small class="d-block">2010 - 2011</small></li>
+                                            <li>BSc Maths and Physics Imperial College London <small class="d-block">2010 - 2011</small></li>
+                                        </ul>
+                                    </div>
+        
+                                    <div class="awards steps">
+                                        <h4 class="section-heading text-uppercase">Awards</h4>
+                                        <ul class="card-text ">
+                                            <li>Award Lorem Ipsum Microsoft lorem ipsum (2019) <small class="d-block">2010 </small></li>
+                                            <!-- <li>Award Lorem Ipsum Microsoft lorem ipsum (2019) <small class="d-block">2010 </small></li> -->
+                                        </ul>
+                                    </div>
+        
+                                    <div class="laguages steps ">
+                                        <h4 class="section-heading text-uppercase">LANGUAGES</h4>
+                                        <ul class="card-text ">
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>Bengoli</li>
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>English</li>
+                                        </ul>
+                                    </div>
+        
+                                    <div class="INTERESTS steps ">
+                                        <h4 class="section-heading text-uppercase">INTERESTS</h4>
+                                        <ul class="card-text ">
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>Technology</li>
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>Photography</li>
+                                            <li><i class="fa-regular fa-circle-check me-2"></i>Travelling</li>
+                                        </ul>
+                                    </div>
+        
+        
+                                </div>
+                            </div>
+        
+                         </div>
+        
+                         <hr class="hr-light hr-bottom">
+                         <div class="d-flex social-link justify-content-center ">
+                            <a href="{{ resume.linkedin_url }}" class=""><i class="fa-brands fa-linkedin me-2"></i>@amsbarik</a>
+                            <a href="{{ resume.github_url }}" ><i class="fa-brands fa-square-github me-2"></i>@amsbarik</a>
+                            <a href="{{ resume.twitter_url }}" ><i class="fa-brands fa-square-x-twitter me-2"></i>@amsbarik</a>
+                         </div>
+                        
+        
+                    </div>
+                </div>
+            </div>
+        </section>

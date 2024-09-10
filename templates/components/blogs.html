@@ -1,0 +1,14 @@
+<div class="card blogs-card border-0" >
+    <a href="{% url 'blog_contents' blog.id %}"  target="_blank">
+      <img src="{{ blog.thumbnail.url }}" class="card-img-top" alt="...">
+    </a>
+    <div class="card-body">
+      <h5 ><a href="{% url 'blog_contents' blog.id %}" class="card-title" target="_blank"> {{ blog.title | truncatechars:34 }} </a></h5>
+      <p class="card-text mb-3 ">{{ blog.short_desc | truncatechars:150 }}</p>
+
+      <a href="{% url 'blog_contents' blog.id %}" target="_blank" class="link ">Read More <i class="fa-solid fa-arrow-right-long ms-2"></i></a>
+      
+      <p class="card-text mt-4"><small class="text-body-secondary">Published {{ blog.time_since_published }} </small></p>
+
+    </div>
+</div>

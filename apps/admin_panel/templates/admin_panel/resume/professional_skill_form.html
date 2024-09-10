@@ -1,0 +1,31 @@
+{% extends 'admin_panel/layouts/master.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Professional Skill Form {% endblock title %}
+
+{% block content %}
+
+<h1 class="app-page-title">Professional Skill Form</h1>
+
+<form action="" method="POST" class="form"> {% csrf_token %}
+    
+    <div class="row gx-4 gy-2 row-cols-1 row-cols-md-2">
+        <div class="col">
+            {{ form.name | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.resume | as_crispy_field }}
+        </div>
+    </div>
+    <div >
+        {{ form.order | as_crispy_field }}
+    </div>
+    <div >
+        {{ form.is_active | as_crispy_field }}
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-4 me-3">Submit</button>
+    <a href="{% url 'professional_skill_all' %}"  class="btn btn-dark mt-4">Cancel</a>
+</form>
+			    
+
+{% endblock content %}

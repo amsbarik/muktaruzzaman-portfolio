@@ -1,0 +1,32 @@
+@use '../base/index' as *;
+@use '../partials/variables' as *;
+
+// blogs card row css
+.row {
+    .blogs-card {
+        background: $light;
+        .card-title{
+            font-size: 1.125rem;
+            text-decoration: underline;
+            transition: .3s;
+        }
+        .card-img-top{
+            height: 18.25rem;
+            object-fit: cover;
+        }
+        .link{
+            &:hover{text-decoration: underline;}
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .row {
+        .blogs-card {
+            .card-img-top{
+                height: 9.25rem;
+            }
+        }
+    }
+}
+

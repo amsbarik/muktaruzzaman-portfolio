@@ -1,0 +1,66 @@
+@use '../base/index' as *;
+@use '../partials/variables' as *;
+
+
+.portfolio{
+    padding: 4rem 0;
+    background: $bg-light;
+    .text{padding: 0 11rem}
+}
+
+// portfolio projects css start 
+.portfolio-projects{
+    .wrapper{
+        .nav{
+            .nav-item{
+                .nav-link{
+                    padding: 0rem .5rem .875rem .5rem;
+                    margin: 0rem 1rem;
+                    color: $dark;
+                    font-weight: $semibold;
+                }
+                .active{
+                    background: none;
+                    color: $primary;
+                    border-bottom: 2px solid $primary;
+                    border-radius: 0;
+                    padding: 0rem .5rem .875rem .5rem;
+                }
+            }
+        }
+    }
+}
+
+// media 
+@media (max-width: 1600px) {
+    .portfolio{
+        .text{padding: 0 5rem}
+    }
+}
+@media (max-width: 1400px) {
+    .portfolio{
+        .text{padding: 0}
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio{
+        padding: 2rem 0;
+    }
+    .portfolio-projects{
+        .wrapper{
+            .nav{
+                .nav-item{
+                    .nav-link{
+                        margin: 0rem .5rem;
+                        font-size: .85rem;
+                        padding: 0rem .4rem .6rem .4rem;
+                        .active{
+                            padding: 0rem .4rem .6rem .4rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

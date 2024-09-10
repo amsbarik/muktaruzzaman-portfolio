@@ -1,0 +1,28 @@
+{% extends 'admin_panel/layouts/master.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Project Technology Form {% endblock title %}
+
+{% block content %}
+
+<h1 class="app-page-title">Project Technology Form</h1>
+
+<form action="" method="POST" class="form"> {% csrf_token %}
+    
+    <div class="row gx-4 gy-2 row-cols-1 row-cols-md-2">
+        <div class="col">
+            {{ form.name | as_crispy_field }}
+        </div>
+        <div class="col">
+            {{ form.resume_project | as_crispy_field }}
+        </div>
+    </div>
+    <div >
+        {{ form.is_active | as_crispy_field }}
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-4 me-3">Submit</button>
+    <a href="{% url 'resume_project_technologies' %}"  class="btn btn-dark mt-4">Cancel</a>
+</form>
+			    
+
+{% endblock content %}

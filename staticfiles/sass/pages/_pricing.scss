@@ -1,0 +1,174 @@
+@use '../base/index' as *;
+@use '../partials/variables' as *;
+
+.pricing-top{
+    padding: 4rem 0;
+    background: $bg-light;
+    .text{padding: 0 10rem; text-align: center;}
+}
+
+
+.services-nav{
+    width: 20rem;
+    margin-top: -1rem;
+    background: $white;
+    border-top: 1px solid $primary;
+    .nav-link{
+        color: $dark;
+        font-weight: $semibold;
+        padding: .7rem 0;
+        &:hover{color: $primary;}
+    }
+    .active{
+        border-bottom: 2px solid $primary; 
+        color: $primary;
+    }
+}
+
+
+.services{
+    .wrapper{
+        .text{
+            padding: 0 10rem;
+        }
+        .row{
+            .service-card{
+                height: 100%;
+                .service-img{
+                    height: 4rem;
+                    width: auto;
+                }
+                .card-title{
+                    font-size: 1.1rem;
+                }
+            }
+        }
+    }
+}
+
+
+.pricing{
+    // .heading{font-size: 1.7rem;}
+    .text{padding: 0 10rem;}
+
+    .table{
+        width: 60rem;
+        thead{
+            th{
+                background: $bg-light;
+                font-size: 1rem;
+                color: $primary;
+            }
+        }
+        tbody{
+            th{
+                background: $bg-light;
+                padding: 1rem;
+            }
+            i{color: $primary;}
+            .price{
+                font-size: 1.5rem;
+                font-weight: $bold;
+                color: $dark;
+            }
+            .card-title{font-size: .875rem; color: $title-color;}
+            .card-text{font-size: .875rem; color: $text-color; font-weight: $regular;}
+        }
+    }
+}
+
+
+
+// media 
+@media (max-width: 1600px) {
+    .pricing-top{
+        .text{padding: 0 5rem;}
+    }
+    .pricing{
+        // .heading{font-size: 1.7rem;}
+        .text{padding: 0 5rem;}
+    }
+    .services{
+        .wrapper{
+            .text{
+                padding: 0 5rem;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 1400px) {
+    .pricing-top{
+        .text{padding: 0;}
+    }
+    .pricing{
+        // .heading{font-size: 1.7rem;}
+        .text{padding: 0 !important;}
+    }
+
+    .services{
+        .wrapper{
+            .text{
+                padding: 0;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 1400px) {
+    .pricing{
+        .table{
+            width: 50rem;
+        }
+    }
+}
+@media (max-width: 1200px) {
+    .pricing{
+        .table{
+            width: 49.25rem;
+        }
+    }
+}
+@media (max-width: 1100px) {
+    .pricing{
+        .table{
+            width: 42.875rem;
+        }
+    }
+}
+
+
+@media (max-width: 768px) {
+    .pricing-top{
+        padding: 2rem 0;
+    }
+
+    .services-nav{
+        width: 16rem;
+        .nav-link{
+            font-size: .875rem;
+            padding: .5rem 0;
+        }
+    }
+
+    .table{
+        thead{
+            th{
+                font-size: .9rem !important;
+                font-weight: $medium ;
+            }
+        }
+        tbody{
+            th{
+                padding: 1rem;
+            }
+            .price{
+                font-size: 1.2rem !important;
+            }
+            .card-title{font-size: .73rem !important; }
+            .card-text{font-size: .73rem !important; }
+        }
+    }
+}
