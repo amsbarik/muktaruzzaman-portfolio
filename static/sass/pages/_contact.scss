@@ -2,10 +2,8 @@
 @use '../partials/variables' as *;
 
 .contact-top{
-    padding: 4rem 0;
     background: $bg-light;
     .wrapper{
-        // .heading{font-size: 2rem;}
         .social-link{
             li{
                 font-size: 1.5rem;
@@ -52,8 +50,6 @@
     }
 }
 
-
-
 @media (max-width: 1200px) {
     .contact{
         .wrapper{
@@ -65,11 +61,24 @@
     }
 }
 @media (max-width: 780px) {
+
+    .contact-top{
+        .wrapper{
+            .social-link{
+                li{
+                    font-size: 1.2rem;
+                    
+                }
+            }
+        }
+    }
+
     .contact{
         .wrapper{
-            .heading{font-size: 1.2rem;}
+            .heading{font-size: 1.3rem;}
+            #id_testimonial_type label{font-size: .875rem;}
             form{
-                width: 28rem ;
+                width: 30rem ;
                 .form-control{
                     margin-top: -1rem;
                     padding-top: .6rem;
@@ -84,15 +93,15 @@
         }
     }
 }
+
+
+
 @media (max-width: 576px) {
-    .contact-top{
-        padding: 2rem 0;
-    }
+
     .contact{
         .wrapper{
-            .heading{font-size: 1.1rem;}
             form{
-                width: 18rem ;
+                width: 100%;
             }
         }
     }

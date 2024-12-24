@@ -1,29 +1,7 @@
 <!--Main Navigation start-->
 <header class="sidebar px-3">
-<!-- 
-    user_photo = models.ImageField(upload_to='users/', blank=True, default='users/user-photo.jpg')
-    position = models.CharField(max_length=50, blank=True)
-    intro = models.TextField(blank=True)
-    mobile = models.CharField(max_length=20, blank=True)
-    email = models.EmailField(blank=True)
-    location = models.CharField(max_length=100, blank=True)
-    
-    website_url = models.URLField(default='https://', blank=True)
-    linkedin_url = models.URLField(default='https://', blank=True)
-    github_url = models.URLField(default='https://', blank=True)
-    stackoverflow_url = models.URLField(default='https://', blank=True)
-    twitter_url = models.URLField(default='https://', blank=True)
-    reddit_url = models.URLField(default='https://', blank=True)
-    facebook_url = models.URLField(default='https://', blank=True)
-    
-    logo = models.ImageField(upload_to='users/', blank=True, default='users/logo.jpg')
-    fav_icon = models.ImageField(upload_to='users/', blank=True, default='users/fav-icon.png')
-    index_title = models.CharField(max_length=254, blank=True)
-    index_meta_kewords = models.TextField(blank=True)
-    short_desc = models.TextField(blank=True) -->
 
-    
-    <img class="profile-photo mt-5 mx-auto d-block rounded-circle" src="{{ user_photo }}" alt="">
+    <img class="profile-photo mt-4 mt-md-5 mx-auto d-block rounded-circle" loading="lazy" src="{{ user_photo }}" alt="">
     <h5 class="text-center mt-3">{{ name }}</h5>
     <p class="text-center intro">{{ intro }}</p>
 
@@ -54,7 +32,7 @@
     </ul>
 
 
-    <nav class="main-nav mt-5 d-flex justify-content-center">
+    <nav class="main-nav mt-4 mt-md-5 d-flex justify-content-center">
         <ul class="">
             <li class="nav-item"><a class="nav-link" href="{% url 'index' %}"><i class="fa-solid fa-user me-2"></i>About Me</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'portfolio' %}"><i class="fa-solid fa-laptop-code me-2" style="margin-left: -4px"></i>My Portfolio</a></li>
@@ -67,7 +45,7 @@
         </ul>
     </nav>
 
-    <div class="text-center"><a href="{% url 'contact' %}" class="btn btn-dark" type="submit"><i class="fa-regular fa-hand-pointer me-2"></i>Hire Me</a></div>
+    <div class="text-center" style="margin-bottom: 130px;"><a href="{% url 'contact' %}" class="btn btn-dark" type="submit"><i class="fa-regular fa-hand-pointer me-2"></i>Hire Me</a></div>
 
     <!-- feedback btn -->
     <div class="text-center feedback">

@@ -7,7 +7,7 @@
 {% block content %} 
 <main class="main-wrapper">
     {% include 'components/message.html' %}
-    <section class="contact-top">
+    <section class="contact-top section-padding">
         <div class="container">
             <div class="wrapper">
                 <h1 class="heading text-center">Share Your Experience</h1>
@@ -43,13 +43,13 @@
         </div>
     </section>
 
-    <section class="contact py-5">
+    <section class="contact section-padding">
         <div class="container d-flex justify-content-center">
-            <div class="wrapper ">
+            <div class="wrapper" >
                 
                 <h2 class="heading text-center text-capitalize mb-4">feedback</h2>
             
-                 <form action="" method="POST" class="form" enctype="multipart/form-data"> {% csrf_token %}
+                 <form action="" method="POST" class="form " enctype="multipart/form-data" > {% csrf_token %}
  
                     <div class="">
                         {{ form.testimonial_type }} 
@@ -91,12 +91,6 @@
     
 
 </main>
-
-
-
-
-
-
 
 
 

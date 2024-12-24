@@ -1,0 +1,248 @@
+{% extends 'admin_panel/layouts/master.html' %}
+{% load custom_filters %}
+
+{% block title %} My Resume {% endblock title %}
+
+{% block content %} 
+
+<a href="{% url 'resume_form' %}" class="btn btn-primary mt-4"> Create Resume</a>
+
+<section class="resume">
+    <div class="container">
+        <div class="wrapper mt-5 ">
+            <div class="resume-body rounded shadow p-5">
+                <!-- contact start  -->
+                <div class="contact d-flex justify-content-between">
+                    <div class="left">
+                        <h1 class="heading text-uppercase">{{ resume.name }} </h1>
+                        <h4 class="sub-heading">{{ resume.position }}</h4>
+                    </div>
+
+                    <div class="right">
+                        <ul class="m-0">
+                            <li class="card-text"><i class="fa-solid fa-phone me-2"></i>{{ resume.mobile }}</li>
+                            <li class="card-text"><i class="fa-solid fa-envelope me-2"></i>{{ resume.email }}</li>
+                            <li class="card-text"><i class="fa-solid fa-globe me-2"></i><a class="card-text" href="{{resume.portfolio_url}}" target="_blank">{{ resume.portfolio_url }}</a></li>
+                            <li class="card-text"><i class="fa-solid fa-location-dot me-2 " style="margin-left: 2px;"></i>{{ resume.address }}</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <a href="{% url 'resume_update' resume.id %}" class="btn btn-primary mt-4"> Update Resume</a>
+                    </div>
+                </div>
+
+                <!-- career summary start -->
+                    <hr class="hr-light">
+                    <div class="career-summary d-flex" >
+                    <div class="">
+                        
+                        {% if resume.image %}
+                        <img class="profile-photo rounded-circle" src="{{ resume.image_url }}" id="resume_img" alt="Resume Profile Photo" >
+                        {% else %}
+                        <img class="profile-photo rounded-circle" src="{{ resume.image.url }}" id="resume_img" alt="Resume Profile Photo" >
+                        {% endif %}
+                        
+                    </div>
+                    <div class="">
+                        <p class="card-text summary ms-5 resume-color-txt" >{{ resume.summary | safe }}</p>
+                    </div>
+                    </div>
+                    
+                    <hr class="hr-light">
+
+                    <div class="row resume-details">
+
+                    <div class="col-auto left-side">
+                        <!-- work experience start -->
+                        <div class="experience">
+                            <h4 class="section-heading text-uppercase"> Working Experience</h4>
+
+                            {% for experience in resume_experiences %}
+                            <div class="mt-4 d-flex justify-content-between">
+                                <h2 class="card-title">{{ experience.name }} </h2>
+                                <small class="link-light">{{ experience.company }} | {{ experience.duration }}</small>
+                            </div>
+                            <p class="card-text mt-2 resume-color-txt">{{ experience.role_desc | safe }} </p>
+
+                            <ul class="mt-2 card-text">
+                                {% if experience.key_role_1 %}
+                                <li><i class="fa-solid fa-check me-2" style="color: #a5a4a4;"></i>{{ experience.key_role_1 }} </li>
+                                {% endif %}
+
+                                {% if experience.key_role_2 %}
+                                <li><i class="fa-solid fa-check me-2" style="color: #a5a4a4;"></i>{{ experience.key_role_2 }} </li>
+                                {% endif %}
+
+                                {% if experience.key_role_3 %}
+                                <li><i class="fa-solid fa-check me-2" style="color: #a5a4a4;"></i>{{ experience.key_role_3 }} </li>
+                                {% endif %}
+                                
+                                {% if experience.key_role_4 %}
+                                <li><i class="fa-solid fa-check me-2" style="color: #a5a4a4;"></i>{{ experience.key_role_4 }} </li>
+                                {% endif %}
+
+                                {% if experience.key_role_5 %}
+                                <li><i class="fa-solid fa-check me-2" style="color: #a5a4a4;"></i>{{ experience.key_role_5 }} </li>
+                                {% endif %}
+
+                            </ul>
+
+                            <hr class="hr-light">
+                            {% endfor %}
+
+                        </div>
+
+                        <!-- <hr class="hr-light"> -->
+                            <!-- resume projest start  -->
+                        <div class="projects mt-4">
+                            <h4 class="section-heading text-uppercase">Projects</h4>
+
+                            {% for project in resume_projects %}
+                            <div class="mt-4 d-flex justify-content-between">
+                                <h2 class="card-title name">{{ project.name }} </h2>
+                                <small class="link-light">
+                                    {% if project.project_live_url %}
+                                    <a href="{{ project.project_live_url }}" target="_blank" title="{{ project.project_live_url }}">Live</a> | 
+                                    {% endif %}
+                                    {% if project.open_source_url %}
+                                    <a href="{{ project.open_source_url }}" target="_blank" title="{{ project.open_source_url }}">Open Source</a>
+                                    {% endif %}
+                                </small>
+                            </div>
+                            <p class="card-text resume-color-txt my-2"> {{ project.role_desc | safe }} </p>
+
+                            <ul class="project-technology card-text text-capitalize row gx-3 gy-1">
+                                {% if project.technology_1 %}
+                                <li class="col-auto"><i class="fa-regular fa-circle-dot me-2" style="color: #a5a4a4;"></i>{{ project.technology_1 }} </li>
+                                {% endif %}
+
+                                {% if project.technology_2 %}
+                                <li class="col-auto"><i class="fa-regular fa-circle-dot me-2" style="color: #a5a4a4;"></i>{{ project.technology_2 }} </li>
+                                {% endif %}
+
+                                {% if project.technology_3 %}
+                                <li class="col-auto"><i class="fa-regular fa-circle-dot me-2" style="color: #a5a4a4;"></i>{{ project.technology_3 }} </li>
+                                {% endif %}
+
+                                {% if project.technology_4 %}
+                                <li class="col-auto"><i class="fa-regular fa-circle-dot me-2" style="color: #a5a4a4;"></i>{{ project.technology_4 }} </li>
+                                {% endif %}
+
+                                {% if project.technology_5 %}
+                                <li class="col-auto"><i class="fa-regular fa-circle-dot me-2" style="color: #a5a4a4;"></i>{{ project.technology_5 }} </li>
+                                {% endif %}
+
+                                {% if project.technology_6 %}
+                                <li class="col-auto"><i class="fa-regular fa-circle-dot me-2" style="color: #a5a4a4;"></i>{{ project.technology_6 }} </li>
+                                {% endif %}
+
+                                {% if project.technology_7 %}
+                                <li class="col-auto"><i class="fa-regular fa-circle-dot me-2" style="color: #a5a4a4;"></i>{{ project.technology_7 }} </li>
+                                {% endif %}
+
+                                {% if project.technology_8 %}
+                                <li class="col-auto"><i class="fa-regular fa-circle-dot me-2" style="color: #a5a4a4;"></i>{{ project.technology_8 }} </li>
+                                {% endif %}
+
+                                {% if project.technology_9 %}
+                                <li class="col-auto"><i class="fa-regular fa-circle-dot me-2" style="color: #a5a4a4;"></i>{{ project.technology_9 }} </li>
+                                {% endif %}
+
+                                {% if project.technology_10 %}
+                                <li class="col-auto"><i class="fa-regular fa-circle-dot me-2" style="color: #a5a4a4;"></i>{{ project.technology_10 }} </li>
+                                {% endif %}
+
+                            </ul>
+
+                            {% if project.id < 2 %}
+                            <hr class="hr-light">
+                            {% endif %}
+
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="col-auto right-side">
+                        <div class="personal-details">
+                            <div class="skill ">
+                                <h4 class="section-heading text-uppercase">Skills</h4>
+                                <h2 class="card-title mt-4">Technical</h2>
+                                <ul class="card-text mt-3">
+                                    {% for skill in technical_skills %}
+                                    <li class="text-capitalize"><i class="fa-regular fa-circle-check me-2"></i>{{ skill.name }} </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class="professional mt-4">
+                                <h2 class="card-title">Professional</h2>
+                                <ul class="card-text mt-3">
+                                    {% for skill in professional_skills %}
+                                    <li class="text-capitalize"><i class="fa-regular fa-circle-check me-2"></i>{{ skill.name }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <!-- education -->
+                            <div class="education steps">
+                                <h4 class="section-heading text-uppercase">education</h4>
+                                <ul class="card-text ">
+                                    {% for education in resume_educations %}
+                                    <li>{{ education.name }} <small class="d-block">{{ education.year }}</small></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class="awards steps">
+                                {% if resume_awards %}
+                                <h4 class="section-heading text-uppercase">Awards</h4>
+                                <ul class="card-text ">
+                                    {% for award in resume_awards %}
+                                    <li>{{ award.name }} <small class="d-block">{{ award.year }}</small></li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+
+                            <div class="laguages steps ">
+                                <h4 class="section-heading text-uppercase">LANGUAGES</h4>
+                                <ul class="card-text ">
+                                    {% for laguages in resume_languages %}
+                                    <li><i class="fa-regular fa-circle-check me-2"></i>{{ laguages.name }} </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class="INTERESTS steps ">
+                                <h4 class="section-heading text-uppercase">INTERESTS</h4>
+                                <ul class="card-text ">
+                                    {% for interest in resume_interests %}
+                                    <li><i class="fa-regular fa-circle-check me-2"></i>{{ interest.name }} </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <hr class="hr-light hr-bottom">
+                    <div class="d-flex social-link justify-content-center ">
+                    <a href="{{ resume.linkedin_url }}" target="_blank" class=""><i class="fa-brands fa-linkedin me-2"></i>@amsbarik</a>
+                    <a href="{{ resume.github_url }}" target="_blank" ><i class="fa-brands fa-square-github me-2"></i>@amsbarik</a>
+                    <a href="{{ resume.twitter_url }}" target="_blank" ><i class="fa-brands fa-square-x-twitter me-2"></i>@amsbarik</a>
+                    </div>
+                
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock content %}

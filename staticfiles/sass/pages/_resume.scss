@@ -2,7 +2,6 @@
 @use '../partials/variables' as *;
 
 .resume-top{
-    padding: 4rem 0;
     background: $bg-light;
     .wrapper{
         .heading{
@@ -14,16 +13,15 @@
     }
 }
 
-// resume css 
+// resume online css 
 .resume{
     .wrapper{
-        padding: 0 8.5rem;
         .resume-body{
+            max-width: 64.125rem;
             .contact{
                 .heading{
                     font-weight: $extra-bold;
                     color: $primary;
-                    font-size: 2.5rem;
                 }
                 .sub-heading{
                     font-weight: 300;
@@ -54,7 +52,10 @@
 
                 //////
                 .left-side{
-                    width: 680px;
+                    width: 71.5%;
+                }
+                .right-side{
+                    width: calc(100% - 71.5%) ;
                 }
                 /// 
                 .personal-details{
@@ -105,6 +106,71 @@
     }
 }
 
+
+@media (max-width:1400px) {
+    // resume online css 
+    .resume{
+        .card-text{font-size: 0.813rem}
+    }
+}
+
+@media (max-width:1200px) {
+    // resume online css 
+    .resume{
+        .card-text{font-size: 0.75rem}
+        .wrapper{
+            .resume-body{
+                min-width: 49.5rem;
+                padding: 2rem;
+                
+                .resume-details{
+                    .personal-details{
+                        width: 204px;
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
+@media (max-width:1050px) {
+    // resume online css 
+    .resume{
+        .wrapper{
+            .resume-body{
+                min-width: 46rem;
+            }
+            
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    // resume online css 
+    .resume{
+        overflow-x: scroll;
+        
+        .wrapper{
+            .resume-body{
+                min-width: 49.5rem;
+
+                .resume-details{
+
+                    //////
+                    .left-side{
+                        width: 33.75rem;
+                    }
+                    .right-side{
+                        width: 12.75rem ;
+                    }
+             
+                }
+            }
+            
+        }
+    }
+}
 
 
 

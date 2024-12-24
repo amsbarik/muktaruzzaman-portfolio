@@ -1,10 +1,10 @@
 {% extends 'layouts/master.html' %}
 {% load static %}
-{% block title %} Services {% endblock title %}
+{% block title %} Services & Pricing {% endblock title %}
 
 {% block content %}
 <main class="main-wrapper">
-    <section class="pricing-top">
+    <section class="pricing-top section-padding">
         <div class="container">
             <div class="wrapper">
                 <h1 class="heading text-center align-middle ">Services & Pricing</h1>
@@ -32,16 +32,16 @@
                 <!-- service start  -->
                 <div class="tab-pane fade show active" id="my-services" role="tabpanel" aria-labelledby="my-services-tab">
 
-                    <div class="services pt-5 pb-4 pb-lg-5">
+                    <div class="services section-padding">
                     
                         <div class="wrapper">
-                            <h2 class="heading text-center align-middle">My Services</h2>
-                            <p class="text text-center mt-4">As a Software Engineer, I deliver full-stack development and responsive design, crafting tailored, high-performing, secure websites with seamless integration, optimization, and ongoing support.</p>
-                            <div class="row g-3 g-lg-5 row-cols-2 row-cols-lg-3 mt-4">
+                            <h2 class="heading-sm text-center align-middle">My Services</h2>
+                            <p class="text text-center mt-3 mt-md-4">As a Software Engineer, I deliver full-stack development and responsive design, crafting tailored, high-performing, secure websites with seamless integration, optimization, and ongoing support.</p>
+                            <div class="row g-3 g-lg-5 row-cols-2 row-cols-lg-3 mt-3 mt-md-4">
                                 {% for service in services %}
                                 <div class="col">
                                     <div class="service-card ">
-                                        <img src="{{ service.thumbnail.url }}" alt="" class="card-img-top service-img">
+                                        <img src="{{ service.thumbnail.url }}" alt="" loading="lazy" class="card-img-top service-img">
 
                                         <h5 class="card-title mt-3">{{ service.name }} </h5>
                                         <p class="card-text mt-2"> {{ service.short_desc }} </p>
@@ -59,15 +59,15 @@
                 <!-- package start  -->
                 <div class="tab-pane fade" id="service-packages" role="tabpanel" aria-labelledby="service-packages-tab">
 
-                    <div class="pricing pt-5 pb-4 pb-lg-5">
+                    <div class="pricing section-padding">
                         
                         <div class="wrapper">
-                            <h2 class="heading text-center align-middle">Service Packages</h2>
-                            <p class="text text-center mt-4">I'm currently taking on freelance software development work. You're welcome to contact me for a custom quote for your project. I also offer development service packages with fixed pricing.</p>
+                            <h2 class="heading-sm text-center align-middle">Service Packages</h2>
+                            <p class="text text-center mt-3 mt-md-4">I'm currently taking on freelance software development work. You're welcome to contact me for a custom quote for your project. I also offer development service packages with fixed pricing.</p>
 
                             <div class="d-flex justify-content-center">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered mt-5">
+                                    <table class="table table-bordered mt-4 mt-md-5">
                                         <thead>
                                             <tr>
                                             <th scope="col"></th>
@@ -146,15 +146,6 @@
 
         </div>
     </section>
-
-
-
-
-
-
-
-
-
 
 
     <!-- hire me  -->

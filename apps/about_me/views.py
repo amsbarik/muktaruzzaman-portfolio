@@ -16,7 +16,7 @@ def index(request, limit=3):
     
     skills = Skill.objects.filter(is_active=True).order_by('order','created_at')[:8]
     projects = Project.objects.filter(is_active=True).order_by('order','created_at')[:4]
-    testimonials = Testimonial.objects.filter(is_active=True).order_by('order', 'created_at')[:limit]
+    testimonials = Testimonial.objects.filter(is_active=True).order_by('order', 'created_at')
     blogs = Blog.objects.filter(is_active=True).order_by('order', 'created_at')[:limit]
    
     context = { 

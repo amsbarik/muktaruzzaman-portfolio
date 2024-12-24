@@ -27,7 +27,7 @@ class Resume(BaseResume):
     facebook_url = models.URLField(max_length=50, default='https://www.facebook.com/amsbarik')
     
     def __str__(self):
-        return self.name
+        return self.position
     
 class ResumeExperience(BaseResume):
     resume = models.ForeignKey(Resume, related_name='resume_experience', on_delete=models.CASCADE)

@@ -1,9 +1,9 @@
 {% load static %}
 
-<section class="resume">
+<section class="resume section-padding ">
     <div class="container">
-        <div class="wrapper mt-5 ">
-            <div class="resume-body rounded shadow p-5">
+        <div class="wrapper d-md-flex justify-content-center ">
+            <div class="resume-body rounded shadow p-xl-5">
                 <!-- contact start  -->
                 <div class="contact d-flex justify-content-between">
                     <div class="left">
@@ -22,25 +22,27 @@
                 </div>
 
                 <!-- career summary start -->
-                    <hr class="hr-light">
-                    <div class="career-summary d-flex" >
+                <hr class="hr-light">
+                <div class="career-summary d-flex" >
                     <div class="">
                         
                         {% if resume.image %}
-                        <img class="profile-photo rounded-circle" src="{{ resume.image.url }}" id="resume_img" alt="Resume Profile Photo" >
+                        <img class="profile-photo rounded-circle" src="{{ resume.image.url }}" loading="lazy" id="resume_img" alt="Resume Profile Photo" >
                         {% else %}
-                        <img class="profile-photo rounded-circle" src="{{ resume.image_url }}" id="resume_img" alt="Resume Profile Photo" >
+                        <img class="profile-photo rounded-circle" src="{{ resume.image_url }}" loading="lazy" id="resume_img" alt="Resume Profile Photo" >
                         {% endif %}
                         
                     </div>
+
                     <div class="">
                         <p class="card-text summary ms-5 resume-color-txt" >{{ resume.summary | safe }}</p>
                     </div>
-                    </div>
-                    
-                    <hr class="hr-light">
 
-                    <div class="row resume-details">
+                </div>
+                
+                <!-- resume-details -->
+                <hr class="hr-light">
+                <div class="row resume-details">
 
                     <div class="col-auto left-side">
                         <!-- work experience start -->
@@ -144,7 +146,7 @@
 
                             </ul>
 
-                            {% if project.id < 2 %}
+                            {% if project.id < 3 %}
                             <hr class="hr-light">
                             {% endif %}
 
@@ -217,14 +219,14 @@
                         </div>
                     </div>
 
-                    </div>
+                </div>
 
-                    <hr class="hr-light hr-bottom">
-                    <div class="d-flex social-link justify-content-center ">
+                <hr class="hr-light hr-bottom">
+                <div class="d-flex social-link justify-content-center ">
                     <a href="{{ resume.linkedin_url }}" target="_blank" class=""><i class="fa-brands fa-linkedin me-2"></i>@amsbarik</a>
                     <a href="{{ resume.github_url }}" target="_blank" ><i class="fa-brands fa-square-github me-2"></i>@amsbarik</a>
                     <a href="{{ resume.twitter_url }}" target="_blank" ><i class="fa-brands fa-square-x-twitter me-2"></i>@amsbarik</a>
-                    </div>
+                </div>
                 
 
             </div>

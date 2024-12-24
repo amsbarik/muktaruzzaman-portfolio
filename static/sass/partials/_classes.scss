@@ -22,6 +22,9 @@
         background: darken($color: $dark, $amount: 6);
     }
 }
+.resume-color-txt{
+    span{color: $primary !important}
+}
 
 // text class 
 .text{
@@ -78,24 +81,32 @@
 .heading{
     font-weight: $bold;
     color: $heading-color;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
-
+.heading-sm{
+    @extend .heading;
+    font-size: 2.1rem;
+}
 .sub-heading{
     font-weight: 300;
     color: $heading-color;
+    font-size: 1.7rem;
 }
 
+.section-padding{
+    padding: 4rem 0;
+}
 .section-heading{
     font-weight: $bold;
     position: relative;
     padding-left: 1.5rem;
     color: $heading-color;
+    font-size: 2rem;
     &::before{
         content: " ";
         width: 0.313rem;
         height: 100%;
-        background: #54B689;
+        background: $primary;
         position: absolute;
         left: 0;
         top: 0;
@@ -105,6 +116,7 @@
 // title class
 .card-title{
     font-weight: $semibold;
+    font-size: 1.125rem;
 }
 
 
@@ -122,29 +134,52 @@
 
 
 // media 
+@media (max-width: 1400px) {
+    .btn{font-size: .938rem;}
+}
+
+@media (max-width: 1200px) {
+    .heading{font-size: 2rem;}
+    .heading-sm{ font-size: 1.7rem; }
+    .sub-heading{font-size: 1.4rem;}
+    .section-heading{font-size: 1.7rem;}
+    .text{font-size: 0.938rem}
+    .card-title{font-size: 1rem }
+    .card-text, .link{font-size: .813rem}
+    .btn{font-size: 0.875rem;}
+}
 @media (max-width: 992px) {
-    .section-heading{font-size: 1.6rem;}
-    .heading{font-size: 1.7rem;}
-    // .sub-heading{font-size: 1.5rem;}
+    .section-padding{padding: 3rem 0}
+    .heading{font-size: 1.8rem;}
+    .heading-sm{ font-size: 1.6rem; }
+    .sub-heading{font-size: 1.3rem;}
+    .section-heading{font-size: 1.5rem;}
+    // .text{font-size: 0.938rem}
+    // .card-text, .link{font-size: .813rem}
+    // .btn{font-size: 0.875rem;}
+
 }
 @media (max-width: 768px) {
-    .heading{font-size: 1.5rem;}
+    // .section-padding{padding: 3rem}
+    .heading{font-size: 1.7rem;}
+    .heading-sm{ font-size: 1.4rem; }
     .sub-heading{font-size: 1.2rem;}
-    .section-heading{ font-size: 1.3rem;}
-    .btn {font-size: .8rem; padding: .3rem 1.3rem;}
+    .section-heading{font-size: 1.3rem;}
     .text{font-size: .875rem;}
-    .card-text{font-size: .75rem;}
-    .card-title{font-size: .8rem !important; }
-    .link{font-size: .78rem;}
+    .card-title{font-size: 0.938rem }
+    .card-text, .link{font-size: 0.813rem}
+    .btn {font-size: .8rem; padding: .3rem 1.3rem;}
 
 }
 @media (max-width: 576px) {
-    .heading{font-size: 1.3rem;}
-    .sub-heading{font-size: 1rem;}
-    .section-heading{font-size: 1.1rem;}
-    .btn {font-size: .7rem; padding: .25rem 1.25rem;}
-    .text{font-size: .75rem;}
-    .card-text{font-size: .7rem;}
-    .link{font-size: .7rem;}
+    .section-padding{padding: 2rem 0}
+    .heading{font-size: 1.6rem;}
+    .heading-sm{ font-size: 1.3rem; }
+    .sub-heading{font-size: 1.1rem;}
+    .section-heading{font-size: 1.3rem;}
+    .text{font-size: 0.813rem;}
+    .card-title{font-size: 0.875rem }
+    .card-text, .link{font-size: 0.75rem}
+    .btn {font-size: .75rem; padding: .3rem 1.3rem;}
 
 }

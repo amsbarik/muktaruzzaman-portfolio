@@ -14,7 +14,7 @@
                 </div>
                 <div class="offcanvas-body">
 
-                    <img class="profile-photo mt-4 mx-auto d-block rounded-circle" src="{{ user_photo }}" alt="">
+                    <img class="profile-photo mt-2 mt-md-4 mx-auto d-block rounded-circle" src="{{ user_photo }}" alt="">
                     <h5 class="text-center name mt-3">{{ name }}</h5>
                     <p class="text-center intro">{{ intro }}</p>
 
@@ -45,7 +45,7 @@
                     </ul>
 
 
-                    <nav class="main-nav mt-5 d-flex justify-content-center">
+                    <nav class="main-nav mt-4 mt-md-5 d-flex justify-content-center">
                         <ul class="">
                             <li class="nav-item"><a class="nav-link" href="{% url 'index' %}"><i class="fa-solid fa-user me-2"></i>About Me</a></li>
                             <li class="nav-item"><a class="nav-link" href="{% url 'portfolio' %}"><i class="fa-solid fa-laptop-code me-2" style="margin-left: -4px"></i>My Portfolio</a></li>
@@ -58,7 +58,7 @@
                         </ul>
                     </nav>
 
-                    <div class="text-center"><a href="{% url 'contact' %}" class="btn btn-dark" type="submit"><i class="fa-regular fa-hand-pointer me-2"></i>Hire Me</a></div>
+                    <div class="text-center " style="margin-bottom: 13px;"><a href="{% url 'contact' %}" class="btn btn-dark" type="submit"><i class="fa-regular fa-hand-pointer me-2"></i>Hire Me</a></div>
 
                     
                     <div class="text-center feedback">

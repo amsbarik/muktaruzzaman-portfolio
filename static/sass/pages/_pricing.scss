@@ -2,7 +2,6 @@
 @use '../partials/variables' as *;
 
 .pricing-top{
-    padding: 4rem 0;
     background: $bg-light;
     .text{padding: 0 10rem; text-align: center;}
 }
@@ -38,9 +37,6 @@
                     height: 4rem;
                     width: auto;
                 }
-                .card-title{
-                    font-size: 1.1rem;
-                }
             }
         }
     }
@@ -48,7 +44,6 @@
 
 
 .pricing{
-    // .heading{font-size: 1.7rem;}
     .text{padding: 0 10rem;}
 
     .table{
@@ -85,7 +80,6 @@
         .text{padding: 0 5rem;}
     }
     .pricing{
-        // .heading{font-size: 1.7rem;}
         .text{padding: 0 5rem;}
     }
     .services{
@@ -103,7 +97,6 @@
         .text{padding: 0;}
     }
     .pricing{
-        // .heading{font-size: 1.7rem;}
         .text{padding: 0 !important;}
     }
 
@@ -125,9 +118,28 @@
     }
 }
 @media (max-width: 1200px) {
+
     .pricing{
+
         .table{
             width: 49.25rem;
+            tbody{
+                .price{
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+    // services
+    .services{
+        .wrapper{
+            .row{
+                .service-card{
+                    .service-img{
+                        height: 3rem;
+                    }
+                }
+            }
         }
     }
 }
@@ -139,6 +151,19 @@
     }
 }
 
+@media (max-width:992px){
+    .services{
+        .wrapper{
+            .row{
+                .service-card{
+                    .service-img{
+                        height: 2.7rem;
+                    }
+                }
+            }
+        }
+    }
+}
 
 @media (max-width: 768px) {
     .pricing-top{
@@ -153,22 +178,40 @@
         }
     }
 
-    .table{
-        thead{
-            th{
-                font-size: .9rem !important;
-                font-weight: $medium ;
+    .pricing{
+        .table{
+            thead{
+                th{
+                    font-size: .9rem ;
+                    font-weight: $medium ;
+                }
+            }
+            tbody{
+                th{
+                    padding: 1rem;
+                }
+                .price{
+                    font-size: 1.1rem ;
+                }
+                .card-title{font-size: .73rem ; }
+                .card-text{font-size: .73rem ; }
             }
         }
-        tbody{
-            th{
-                padding: 1rem;
+
+    }
+    
+}
+
+@media (max-width:576px){
+    .services{
+        .wrapper{
+            .row{
+                .service-card{
+                    .service-img{
+                        height: 2.4rem;
+                    }
+                }
             }
-            .price{
-                font-size: 1.2rem !important;
-            }
-            .card-title{font-size: .73rem !important; }
-            .card-text{font-size: .73rem !important; }
         }
     }
 }

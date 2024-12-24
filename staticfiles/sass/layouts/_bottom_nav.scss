@@ -1,0 +1,45 @@
+
+@use "../base/index" as *;
+@use "../partials/index" as *;
+
+
+
+// nav bottom start
+.nav-bottom{
+    border-top: 1px solid lighten($color: $dark, $amount: 77) ;
+    height: 3.3rem ;
+    
+    ul{
+        margin-top: .5rem;
+        .nav-item{
+            .nav-link{
+                font-size: .75rem;
+                transition: .4s;
+                text-align: center;
+                color: $dark;
+                font-weight: 500;
+                &.active{
+                    border-top: 2px solid $primary;
+                    padding: 8px 0;
+                    
+                    margin-top: -10px;
+                    color: $primary;
+                }
+              &:hover{
+                i{color: $primary;}
+              }
+              span{
+                font-size: .72rem ;
+              }
+            }
+        }
+    }
+  }
+  
+  
+  @media (min-width: 992px) {
+      .nav-bottom{
+          display: none;
+      }
+  }
+  // nav css end

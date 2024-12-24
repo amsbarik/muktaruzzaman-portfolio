@@ -13,12 +13,12 @@ from .forms import ResumeForm, ResumeExperienceForm, ResumeExperienceKeyForm, Re
 
 
 
-# Create your views here.
+# Get One resume views here.
 def resume_online(request):
-    resume = Resume.objects.first()
+    resume = Resume.objects.filter(is_active=True).first()
     
-    resume_experiences = resume.resume_experience.filter(is_active=True).order_by('order', 'created_at')[:2]
-    resume_projects = resume.resume_project.filter(is_active=True).order_by('order', 'created_at')[:2]
+    resume_experiences = resume.resume_experience.filter(is_active=True).order_by('order', 'created_at').all()
+    resume_projects = resume.resume_project.filter(is_active=True).order_by('order', 'created_at').all()
     
     technical_skills = resume.resume_technical_skill.filter(is_active=True).order_by('order', 'created_at').all()
     professional_skills = resume.resume_professional_skill.filter(is_active=True).order_by('order', 'created_at').all()
@@ -42,16 +42,55 @@ def resume_online(request):
     
     return render(request, 'resume/resume_online.html', context)
 
+# Get active all resume 
+# def resume_online(request):
+#     # Retrieve all active resumes
+#     resumes = Resume.objects.filter(is_active=True).all()
+    
+#     # Initialize dictionaries to hold related data for each resume
+#     resume_data = []
+    
+#     for resume in resumes:
+#         # Get related objects for each resume
+#         resume_experiences = resume.resume_experience.filter(is_active=True).order_by('order', 'created_at').all()
+#         resume_projects = resume.resume_project.filter(is_active=True).order_by('order', 'created_at').all()
+#         technical_skills = resume.resume_technical_skill.filter(is_active=True).order_by('order', 'created_at').all()
+#         professional_skills = resume.resume_professional_skill.filter(is_active=True).order_by('order', 'created_at').all()
+#         resume_educations = resume.resume_education.filter(is_active=True).order_by('order', 'created_at')[:2]
+#         resume_awards = resume.resume_award.filter(is_active=True).order_by('order', 'created_at')[:2]
+#         resume_languages = resume.resume_language.filter(is_active=True).order_by('order', 'created_at').all()
+#         resume_interests = resume.resume_interest.filter(is_active=True).order_by('order', 'created_at').all()
+        
+#         # Collect all related data for the current resume
+#         resume_data.append({
+#             'resume': resume,
+#             'resume_experiences': resume_experiences,
+#             'resume_projects': resume_projects,
+#             'technical_skills': technical_skills,
+#             'professional_skills': professional_skills,
+#             'resume_educations': resume_educations,
+#             'resume_awards': resume_awards,
+#             'resume_languages': resume_languages,
+#             'resume_interests': resume_interests,
+#         })
+
+#     context = {
+#         'resumes_data': resume_data,
+#     }
+    
+#     return render(request, 'resume/resume_online.html', context)
+
+
 
 # resume pdf view 
 def resume_pdf(request):
-    resume = Resume.objects.first()
+    resume = Resume.objects.filter(is_active=True).first()
     
-    resume_experiences = resume.resume_experience.filter(is_active=True).order_by('order', 'created_at')[:2]
+    resume_experiences = resume.resume_experience.filter(is_active=True).order_by('order', 'created_at').all()
     # experience = get_object_or_404(resume_experiences)
     # resume_experience_keys = experience.resume_experience_key.all()
     
-    resume_projects = resume.resume_project.filter(is_active=True).order_by('order', 'created_at')[:2]
+    resume_projects = resume.resume_project.filter(is_active=True).order_by('order', 'created_at').all()
         
     # project = get_object_or_404(resume_projects)
     
@@ -170,46 +209,50 @@ def resume_pdf(request):
     
     
 # ////////////////////// admin resume view start here /////////////////////////
+# @login_required
+# @user_passes_test(is_superuser)
+# def resume(request):
+#     # resume = Resume.objects.all()
+    
+#     resume = Resume.objects.first()
+    
+#     resume_experiences = resume.resume_experience.filter(is_active=True).order_by('order', 'created_at')[:2]
+#     resume_projects = resume.resume_project.filter(is_active=True).order_by('order', 'created_at')[:2]
+    
+#     technical_skills = resume.resume_technical_skill.filter(is_active=True).order_by('order', 'created_at').all()
+#     professional_skills = resume.resume_professional_skill.filter(is_active=True).order_by('order', 'created_at').all()
+#     resume_educations = resume.resume_education.filter(is_active=True).order_by('order', 'created_at')[:2]
+#     resume_awards = resume.resume_award.filter(is_active=True).order_by('order', 'created_at')[:2]
+#     resume_languages = resume.resume_language.filter(is_active=True).order_by('order', 'created_at').all()
+#     resume_interests = resume.resume_interest.filter(is_active=True).order_by('order', 'created_at').all()
+    
+#     context = {
+#         'resume' : resume,
+#         'resume_experiences' : resume_experiences,
+#         'resume_projects' : resume_projects,
+        
+#         'technical_skills' : technical_skills,
+#         'professional_skills' : professional_skills,
+#         'resume_educations' : resume_educations,
+#         'resume_awards' : resume_awards,
+#         'resume_languages' : resume_languages,
+#         'resume_interests' : resume_interests,
+#     }
+
+#     return render(request, 'admin_panel/resume/resume.html', context)
+
+
+# Get all resume 
 @login_required
 @user_passes_test(is_superuser)
 def resume(request):
-    # resume = Resume.objects.all()
-    
-    resume = Resume.objects.first()
-    
-    resume_experiences = resume.resume_experience.filter(is_active=True).order_by('order', 'created_at')[:2]
-    resume_projects = resume.resume_project.filter(is_active=True).order_by('order', 'created_at')[:2]
-    
-    technical_skills = resume.resume_technical_skill.filter(is_active=True).order_by('order', 'created_at').all()
-    professional_skills = resume.resume_professional_skill.filter(is_active=True).order_by('order', 'created_at').all()
-    resume_educations = resume.resume_education.filter(is_active=True).order_by('order', 'created_at')[:2]
-    resume_awards = resume.resume_award.filter(is_active=True).order_by('order', 'created_at')[:2]
-    resume_languages = resume.resume_language.filter(is_active=True).order_by('order', 'created_at').all()
-    resume_interests = resume.resume_interest.filter(is_active=True).order_by('order', 'created_at').all()
-    
+    resumes = Resume.objects.order_by('created_at').all()
+
     context = {
-        'resume' : resume,
-        'resume_experiences' : resume_experiences,
-        'resume_projects' : resume_projects,
-        
-        'technical_skills' : technical_skills,
-        'professional_skills' : professional_skills,
-        'resume_educations' : resume_educations,
-        'resume_awards' : resume_awards,
-        'resume_languages' : resume_languages,
-        'resume_interests' : resume_interests,
+        'resumes': resumes,
     }
-
+    
     return render(request, 'admin_panel/resume/resume.html', context)
-
-
-
-
-
-
-
-
-
 
 
 
@@ -239,7 +282,16 @@ def resume_form(request, pk=0):
             form.save()
 
         return redirect('admin_resume')
-        
+       
+       
+       
+# resume_delete 
+@login_required
+@user_passes_test(is_superuser)
+def resume_delete(request, pk):
+    resume = Resume.objects.get(id=pk)
+    resume.delete()
+    return redirect('resume')
 
 # resume experience view 
 @login_required

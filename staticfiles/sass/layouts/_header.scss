@@ -1,12 +1,6 @@
 @use "../base/index" as *;
 @use "../partials/index" as *;
 
-
-
-
- 
-
-  
 .header{
     .navbar{
         .navbar-toggler{
@@ -52,7 +46,13 @@
                 }
             
                 .feedback{
-                    margin-top: 10rem; 
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    width: 14.5rem;
+                    padding-top: 16px;
+                    padding-bottom: 24px;
+                    background: lighten($color: $primary, $amount: 5);
                     a{
                         font-size: .875rem; 
                         color: darken($color: $primary, $amount: 20); 
@@ -92,8 +92,10 @@
                     .social-link{
                         font-size: 1.2rem;
                     }
+                   
                     .feedback{
-                        margin-top: 3.4rem; 
+                        padding-bottom: 72px;
+                        padding-top: 14px;
                     }
                 }
             }

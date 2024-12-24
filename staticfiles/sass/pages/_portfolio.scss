@@ -3,7 +3,7 @@
 
 
 .portfolio{
-    padding: 4rem 0;
+    // padding: 4rem 0;
     background: $bg-light;
     .text{padding: 0 11rem}
 }
@@ -44,9 +44,7 @@
 }
 
 @media (max-width: 768px) {
-    .portfolio{
-        padding: 2rem 0;
-    }
+    
     .portfolio-projects{
         .wrapper{
             .nav{

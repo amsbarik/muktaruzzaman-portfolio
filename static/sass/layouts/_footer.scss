@@ -1,0 +1,8 @@
+@use "../base/index" as *;
+@use "../partials/index" as *;
+
+
+
+@media (max-width: 992px) {
+    .footer{margin-bottom: 70px;}
+}

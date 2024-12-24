@@ -16,6 +16,7 @@ urlpatterns = [
     #resume urls 
     path('form/', views.resume_form, name='resume_form'),
     path('update/<int:pk>/', views.resume_form, name='resume_update'),
+    path('delete/<int:pk>/', views.resume_delete, name='resume_delete'),
     path('resume/', views.resume, name='admin_resume'),
     
     # resume_experience 
